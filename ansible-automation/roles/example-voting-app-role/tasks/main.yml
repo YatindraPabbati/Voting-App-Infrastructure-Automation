@@ -1,0 +1,154 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for example-voting-app-role
+    - name: ensure git is installed
+      ansible.builtin.package:
+        name: git
+        state: present
+
+    - name: clone git project repo
+      ansible.builtin.git:
+        repo: "https://github.com/dockersamples/example-voting-app.git"
+        dest: "{{ ansible_env.HOME }}/example-voting-app"
+        version: main
+        clone: true
+        update: true
+
+    - name: ensure python3 and python3-pip are installed
+      ansible.builtin.package:
+        name:
+          - python3
+          - python3-pip
+        state: present
+
+    - name: Set ostype fact
+      set_fact:
+        ostype: "{{ ansible_facts.os_family | lower }}"
+        osdistro: "{{ ansible_facts.distribution | lower }}"
+
+    - name: Delete conflicting packages for Debian
+      ansible.builtin.package:
+        name: "{{ deb_confl_pack }}"
+        purge: true
+        state: absent
+      when: osdistro == 'debian'
+
+    - name: Delete conflicting packages for RedHat based systems
+      ansible.builtin.package:
+        name: "{{ rh_confl_pack }}"
+        purge: true
+        state: absent
+      when: ostype == 'redhat'
+
+    - name: Install prerequisite packages for Debian
+      ansible.builtin.package:
+        name: "{{ deb_prereq_pack }}"
+        state: present
+      when: osdistro == 'debian'
+
+    - name: Install prerequisite packages for RedHat based systems
+      ansible.builtin.package:
+        name: "{{ rh_prereq_pack }}"
+        state: present
+      when: ostype == 'redhat'
+
+    - name: Add Docker repo for RedHat based systems
+      ansible.builtin.yum_repository:
+        name: docker-ce-stable
+        baseurl: "{{ rh_docker_repo }}"
+        gpgcheck: true
+        gpgkey: "{{ rh_docker_gpgkey }}"
+        enabled: true
+      when: ostype == 'redhat'
+
+    - name: Download Docker GPG key for Ubuntu
+      ansible.builtin.apt_key:
+        url: "{{ ubuntu_docker_gpgkey }}"
+        state: present
+        keyring: /usr/share/keyrings/docker-archive-keyring.gpg
+      when: osdistro == 'ubuntu'
+
+    - name: Add Docker APT repository for Ubuntu
+      ansible.builtin.apt_repository:
+        repo: "{{ ubuntu_docker_repo }}"
+        state: present
+        filename: docker
+        update_cache: true
+      when: osdistro == 'ubuntu'
+
+    - name: Download Docker GPG key for Debian
+      ansible.builtin.apt_key:
+        url: "{{ deb_docker_gpgkey }}"
+        state: present
+        keyring: /usr/share/keyrings/docker-archive-keyring.gpg
+      when: osdistro == 'debian'
+
+    - name: Add Docker APT repository for Debian
+      ansible.builtin.apt_repository:
+        repo: "{{ deb_docker_repo }}"
+        state: present
+        filename: docker
+        update_cache: yes
+      when: osdistro == 'debian'
+
+    - name: Update APT cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install docker packages for Ubuntu
+      ansible.builtin.package:
+        name: "{{ ubuntu_docker_pack }}"
+        state: present
+      when: osdistro == 'ubuntu'
+
+    - name: Install docker packages for Debian
+      ansible.builtin.package:
+        name: "{{ deb_docker_pack }}"
+        state: present
+      when: osdistro == 'debian'
+
+    - name: Install docker packages for RedHat based systems
+      ansible.builtin.package:
+        name: "{{ rh_docker_pack }}"
+        state: present
+      when: ostype == 'redhat'
+
+    - name: add user to docker group
+      ansible.builtin.user:
+        name: "{{ ansible_user | default(lookup('env','USER')) }}"
+        groups: docker
+        append: true
+
+    - name: Start and enable docker service for Debian
+      ansible.builtin.service:
+        name: "{{ deb_docker_service }}"
+        state: started
+        enabled: true
+      when: osdistro == 'debian'
+
+    - name: Start and enable docker service for Ubuntu
+      ansible.builtin.service:
+        name: "{{ ubuntu_docker_service }}"
+        state: started
+        enabled: true
+      when: osdistro == 'ubuntu'
+
+    - name: Start and enable docker service for RedHat based systems
+      ansible.builtin.service:
+        name: "{{ rh_docker_service }}"
+        state: started
+        enabled: true
+      when: ostype == 'redhat'
+
+    - name: applying docker-compose template
+      ansible.builtin.template:
+        src: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/templates/docker-compose.yml.j2"
+        dest: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files/docker-compose.yml"
+        mode: "0644"
+    - name: Run voting app stack
+      community.docker.docker_compose_v2:
+        project_src: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files"
+        state: present
+        build: always
+        restarted: true 

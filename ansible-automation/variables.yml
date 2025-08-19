@@ -1,0 +1,52 @@
+deb_confl_pack:
+    - docker
+    - docker-engine
+    - docker.io  
+    - containerd
+    - runc
+
+rh_confl_pack:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-engine
+    - podman
+    - runc
+
+deb_prereq_pack:
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+    - apt-transport-https
+    - software-properties-common
+
+rh_prereq_pack:
+    - dnf-plugins-core
+    - device-mapper-persistent-data
+    - lvm2
+    - ca-certificates
+    - curl
+    - tar
+    - glibc
+
+rh_docker_repo:  "https://download.docker.com/linux/centos/$releasever/$basearch/stable"
+
+rh_docker_gpgkey:  "https://download.docker.com/linux/centos/gpg"
+
+deb_docker_repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+
+deb_docker_gpgkey: "https://download.docker.com/linux/debian/gpg"
+
+docker_pack:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+
+docker_service: docker

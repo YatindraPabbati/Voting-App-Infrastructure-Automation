@@ -1,0 +1,12 @@
+---
+ansible-navigator:
+  execution-environment:
+    container-engine: docker
+    enabled: true
+    image: ghcr.io/ansible/creator-ee:latest
+    pull:
+      policy: missing
+    volume-mounts:
+    - dest: /home/ansible/.ansible/collections
+      options: Z
+      src: ~/.ansible/collections

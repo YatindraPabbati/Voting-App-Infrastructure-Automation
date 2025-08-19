@@ -1,0 +1,32 @@
+galaxy_info:
+  author: Yatindra
+  description: Deploys the Demo Voting App using Docker and Docker Compose.
+  company: Personal Project
+  license: MIT
+
+  min_ansible_version: 2.12
+
+  platforms:
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Debian
+      versions:
+        - 10
+        - 11
+    - name: Ubuntu
+      versions:
+        - 20.04
+        - 22.04
+
+  galaxy_tags:
+    - docker
+    - docker_compose
+    - voting_app
+    - demo
+    - ansible_role
+    - webapp
+    - containers
+
+dependencies: []

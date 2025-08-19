@@ -1,0 +1,7 @@
+---
+- name: Test example voting app role
+  hosts: azure_vms
+  become: true
+  gather_facts: true
+  roles:
+    - example-voting-app-role

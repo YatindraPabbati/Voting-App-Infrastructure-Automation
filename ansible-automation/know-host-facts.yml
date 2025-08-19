@@ -1,0 +1,7 @@
+---
+- name: list host facts
+  hosts: azure_vms
+  tasks:
+    - name: facts
+      ansible.builtin.debug:
+        var: ansible_facts
