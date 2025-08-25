@@ -1,0 +1,317 @@
+---
+- name: Install Docker on Ubuntu and Red Hat Azure VMs with repository validation
+  hosts: all
+  become: yes
+  vars:
+    # Docker packages to remove (older versions)
+    docker_old_packages_ubuntu:
+      - docker.io
+      - docker-doc
+      - docker-compose
+      - docker-compose-v2
+      - podman-docker
+      - containerd
+      - runc
+    
+    docker_old_packages_redhat:
+      - docker
+      - docker-client
+      - docker-client-latest
+      - docker-common
+      - docker-latest
+      - docker-latest-logrotate
+      - docker-logrotate
+      - docker-selinux
+      - docker-engine-selinux
+      - docker-engine
+      - docker-compose
+
+  tasks:
+    # Check connectivity and system info
+    - name: Check system information
+      debug:
+        msg: 
+          - "OS Family: {{ ansible_os_family }}"
+          - "Distribution: {{ ansible_distribution }}"
+          - "Distribution Release: {{ ansible_distribution_release }}"
+          - "Architecture: {{ ansible_architecture }}"
+
+    - name: Test connectivity to Docker repository
+      uri:
+        url: "https://download.docker.com/linux/{{ 'ubuntu' if ansible_os_family == 'Debian' else 'centos' }}/gpg"
+        method: HEAD
+        timeout: 10
+      register: connectivity_test
+      ignore_errors: yes
+
+    - name: Display connectivity status
+      debug:
+        msg: "{{ 'Docker repository is accessible' if connectivity_test.status == 200 else 'Warning: Docker repository connectivity issue' }}"
+
+    # Ubuntu specific tasks
+    - block:
+        - name: Check if Docker repository already exists on Ubuntu
+          stat:
+            path: /etc/apt/sources.list.d/docker.list
+          register: ubuntu_docker_repo
+
+        - name: Display Docker repository status on Ubuntu
+          debug:
+            msg: "{{ 'Docker repository file exists' if ubuntu_docker_repo.stat.exists else 'Docker repository not configured' }}"
+
+        - name: Check existing Docker repository content on Ubuntu
+          slurp:
+            src: /etc/apt/sources.list.d/docker.list
+          register: ubuntu_repo_content
+          when: ubuntu_docker_repo.stat.exists
+          ignore_errors: yes
+
+        - name: Display existing repository content
+          debug:
+            msg: "Current Docker repository: {{ ubuntu_repo_content.content | b64decode | trim }}"
+          when: ubuntu_docker_repo.stat.exists and ubuntu_repo_content is succeeded
+
+        - name: Check if Docker GPG key exists on Ubuntu
+          stat:
+            path: /etc/apt/keyrings/docker.gpg
+          register: ubuntu_docker_gpg
+
+        - name: Remove older Docker versions on Ubuntu
+          apt:
+            name: "{{ docker_old_packages_ubuntu }}"
+            state: absent
+            purge: yes
+          ignore_errors: yes
+
+        - name: Remove existing broken Docker repository on Ubuntu
+          file:
+            path: /etc/apt/sources.list.d/docker.list
+            state: absent
+          when: not ubuntu_docker_gpg.stat.exists or connectivity_test.status != 200
+
+        - name: Update apt package index before installation
+          apt:
+            update_cache: yes
+          retries: 3
+          delay: 5
+
+        - name: Install required packages for Ubuntu
+          apt:
+            name:
+              - ca-certificates
+              - curl
+              - gnupg
+              - lsb-release
+            state: present
+            update_cache: yes
+
+        - name: Create keyrings directory on Ubuntu
+          file:
+            path: /etc/apt/keyrings
+            state: directory
+            mode: '0755'
+
+        - name: Add Docker's official GPG key on Ubuntu
+          shell: |
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+          args:
+            creates: /etc/apt/keyrings/docker.gpg
+          retries: 3
+          delay: 5
+
+        - name: Set proper permissions on Docker GPG key
+          file:
+            path: /etc/apt/keyrings/docker.gpg
+            mode: '0644'
+
+        - name: Add Docker repository on Ubuntu
+          lineinfile:
+            path: /etc/apt/sources.list.d/docker.list
+            line: "deb [arch={{ 'amd64' if ansible_architecture == 'x86_64' else ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+            create: yes
+            mode: '0644'
+
+        - name: Update apt package index after adding Docker repo
+          apt:
+            update_cache: yes
+          retries: 3
+          delay: 5
+
+        - name: Verify docker-ce package is available on Ubuntu
+          shell: apt-cache policy docker-ce
+          register: ubuntu_docker_ce_check
+          changed_when: false
+
+        - name: Display docker-ce availability on Ubuntu
+          debug:
+            msg: "{{ ubuntu_docker_ce_check.stdout }}"
+
+        - name: Install Docker Engine on Ubuntu
+          apt:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-buildx-plugin
+              - docker-compose-plugin
+            state: present
+          retries: 3
+          delay: 10
+
+      when: ansible_os_family == "Debian"
+
+    # Red Hat specific tasks
+    - block:
+        - name: Check if Docker repository already exists on Red Hat
+          yum_repository:
+            name: docker-ce-stable
+            state: present
+          check_mode: yes
+          register: redhat_docker_repo
+          ignore_errors: yes
+
+        - name: Remove older Docker versions on Red Hat
+          yum:
+            name: "{{ docker_old_packages_redhat }}"
+            state: absent
+          ignore_errors: yes
+
+        - name: Install required packages for Red Hat
+          yum:
+            name:
+              - yum-utils
+              - device-mapper-persistent-data
+              - lvm2
+            state: present
+
+        - name: Add Docker CE repository on Red Hat
+          yum_repository:
+            name: docker-ce-stable
+            description: Docker CE Stable - $basearch
+            baseurl: "https://download.docker.com/linux/{{ 'centos' if ansible_distribution == 'CentOS' else 'rhel' }}/$releasever/$basearch/stable"
+            gpgcheck: yes
+            gpgkey: "https://download.docker.com/linux/{{ 'centos' if ansible_distribution == 'CentOS' else 'rhel' }}/gpg"
+            enabled: yes
+
+        - name: Verify docker-ce package is available on Red Hat
+          shell: yum list available docker-ce
+          register: redhat_docker_ce_check
+          changed_when: false
+          ignore_errors: yes
+
+        - name: Display docker-ce availability on Red Hat
+          debug:
+            msg: "{{ redhat_docker_ce_check.stdout if redhat_docker_ce_check.rc == 0 else 'Docker CE package not found in repository' }}"
+
+        - name: Install Docker Engine on Red Hat
+          yum:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-buildx-plugin
+              - docker-compose-plugin
+            state: present
+          retries: 3
+          delay: 10
+
+      when: ansible_os_family == "RedHat"
+
+    # Common tasks for both systems
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+      register: docker_service_start
+
+    - name: Wait for Docker service to be ready
+      wait_for:
+        port: 2375
+        host: 127.0.0.1
+        timeout: 30
+      ignore_errors: yes
+
+    - name: Add current user to docker group
+      user:
+        name: "{{ ansible_user | default(ansible_env.USER) }}"
+        groups: docker
+        append: yes
+      when: ansible_user is defined or ansible_env.USER is defined
+
+    - name: Verify Docker installation
+      command: docker --version
+      register: docker_version
+      changed_when: false
+      retries: 3
+      delay: 5
+
+    - name: Display Docker version
+      debug:
+        msg: "✅ Docker installed successfully: {{ docker_version.stdout }}"
+
+    - name: Verify Docker Compose plugin installation
+      command: docker compose version
+      register: docker_compose_version
+      changed_when: false
+      retries: 3
+      delay: 5
+
+    - name: Display Docker Compose version
+      debug:
+        msg: "✅ Docker Compose installed successfully: {{ docker_compose_version.stdout }}"
+
+    - name: Test Docker daemon is running
+      command: docker info
+      register: docker_info
+      changed_when: false
+      ignore_errors: yes
+
+    - name: Display Docker daemon status
+      debug:
+        msg: "{{ '✅ Docker daemon is running' if docker_info.rc == 0 else '❌ Docker daemon is not running properly' }}"
+
+    - name: Test Docker installation with hello-world
+      docker_container:
+        name: hello-world-test
+        image: hello-world
+        state: started
+        cleanup: yes
+        detach: no
+        pull: yes
+      register: hello_world_output
+      ignore_errors: yes
+      retries: 2
+      delay: 10
+
+    - name: Display hello-world test result
+      debug:
+        msg: "{{ '✅ Docker installation test successful' if hello_world_output is succeeded else '❌ Docker installation test failed - ' + (hello_world_output.msg | default('Unknown error')) }}"
+
+    # Repository validation summary
+    - name: Final repository validation
+      block:
+        - name: Check final repository configuration on Ubuntu
+          shell: |
+            echo "Repository file exists: $(ls -la /etc/apt/sources.list.d/docker.list 2>/dev/null || echo 'Not found')"
+            echo "GPG key exists: $(ls -la /etc/apt/keyrings/docker.gpg 2>/dev/null || echo 'Not found')"
+            echo "Docker packages available: $(apt list --available 2>/dev/null | grep docker-ce | wc -l) packages"
+          register: ubuntu_final_check
+          when: ansible_os_family == "Debian"
+
+        - name: Check final repository configuration on Red Hat
+          shell: |
+            echo "Repository configured: $(yum repolist enabled | grep docker-ce-stable || echo 'Not found')"
+            echo "Docker packages available: $(yum list available docker-ce 2>/dev/null | grep docker-ce | wc -l) packages"
+          register: redhat_final_check
+          when: ansible_os_family == "RedHat"
+
+        - name: Display final Ubuntu repository status
+          debug:
+            msg: "{{ ubuntu_final_check.stdout_lines }}"
+          when: ansible_os_family == "Debian"
+
+        - name: Display final Red Hat repository status
+          debug:
+            msg: "{{ redhat_final_check.stdout_lines }}"
+          when: ansible_os_family == "RedHat"

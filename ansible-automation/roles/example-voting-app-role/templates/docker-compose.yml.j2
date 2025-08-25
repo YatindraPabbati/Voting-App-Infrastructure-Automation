@@ -16,7 +16,7 @@ services:
 
   vote:
     build:
-      context: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files/vote"
+      context: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation/vote"
     ports:
       - "5000:80"
     depends_on:
@@ -24,14 +24,14 @@ services:
 
   worker:
     build:
-      context: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files/worker"
+      context: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation/worker"
     depends_on:
       - redis
       - db
 
   result:
     build:
-      context: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files/result"
+      context: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation/result"
     ports:
       - "5001:80"
     depends_on:

@@ -1,0 +1,243 @@
+{
+    "plays": [
+        {
+            "__play_name": "Test example voting app role",
+            "name": "Test example voting app role",
+            "pattern": "azure_vms",
+            "play": "Test example voting app role",
+            "play_pattern": "azure_vms",
+            "play_uuid": "7c1e5265-4b6d-eed3-447e-000000000002",
+            "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+            "playbook_uuid": "40972f17-778c-4aa9-b019-85b7703770e7",
+            "tasks": [
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 0,
+                    "__result": "Failed",
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "duration": 0.02133,
+                    "end": "2025-08-25T06:37:15.593830+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "ignore_errors": null,
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-eed3-447e-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "40972f17-778c-4aa9-b019-85b7703770e7",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "changed": false,
+                        "exception": "(traceback unavailable)",
+                        "msg": "Task failed: Error processing keyword 'become_user': 'ansible_user_id' is undefined"
+                    },
+                    "resolved_action": null,
+                    "start": "2025-08-25T06:37:15.572500+00:00",
+                    "task": "Gathering Facts",
+                    "task_action": "gather_facts",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml:2",
+                    "task_uuid": "7c1e5265-4b6d-eed3-447e-000000000028",
+                    "uuid": "4ce130fb-34f6-4109-b56c-16838992e143"
+                }
+            ],
+            "uuid": "7c1e5265-4b6d-eed3-447e-000000000002"
+        }
+    ],
+    "settings_entries": {
+        "ansible-navigator": {
+            "ansible": {
+                "cmdline": "-vvv",
+                "config": {
+                    "help": false
+                },
+                "doc": {
+                    "help": false,
+                    "plugin": {
+                        "type": "module"
+                    }
+                },
+                "inventory": {
+                    "entries": [
+                        "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory"
+                    ],
+                    "help": false
+                },
+                "playbook": {
+                    "help": false,
+                    "path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml"
+                }
+            },
+            "ansible-builder": {
+                "help": false,
+                "workdir": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation"
+            },
+            "ansible-runner": {
+                "job-events": false
+            },
+            "app": "run",
+            "collection-doc-cache-path": "/home/azureuser/.cache/ansible-navigator/collection_doc_cache.db",
+            "color": {
+                "enable": true,
+                "osc4": true
+            },
+            "editor": {
+                "command": "vi +{line_number} {filename}",
+                "console": true
+            },
+            "enable-prompts": false,
+            "exec": {
+                "command": "/bin/bash",
+                "shell": true
+            },
+            "execution-environment": {
+                "container-engine": "docker",
+                "enabled": false,
+                "image": "ghcr.io/ansible/creator-ee:latest",
+                "pull": {
+                    "policy": "missing"
+                },
+                "volume-mounts": [
+                    {
+                        "dest": "/home/ansible/.ansible/collections",
+                        "options": "Z",
+                        "src": "/home/azureuser/.ansible/collections"
+                    }
+                ]
+            },
+            "format": "yaml",
+            "images": {
+                "details": [
+                    "everything"
+                ]
+            },
+            "logging": {
+                "append": true,
+                "file": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible-navigator.log",
+                "level": "warning"
+            },
+            "mode": "stdout",
+            "playbook-artifact": {
+                "enable": true,
+                "save-as": "{playbook_dir}/{playbook_name}-artifact-{time_stamp}.json"
+            },
+            "settings": {
+                "effective": false,
+                "sample": false,
+                "schema": "json",
+                "sources": false
+            },
+            "time-zone": "UTC"
+        }
+    },
+    "settings_sources": {
+        "ansible-navigator.ansible-builder.help": "Defaults",
+        "ansible-navigator.ansible-builder.workdir": "Defaults",
+        "ansible-navigator.ansible-lint.config": "Not set",
+        "ansible-navigator.ansible-lint.lintables": "Not set",
+        "ansible-navigator.ansible-runner.artifact-dir": "Not set",
+        "ansible-navigator.ansible-runner.job-events": "Defaults",
+        "ansible-navigator.ansible-runner.rotate-artifacts-count": "Not set",
+        "ansible-navigator.ansible-runner.timeout": "Not set",
+        "ansible-navigator.ansible.cmdline": "Command line",
+        "ansible-navigator.ansible.config.help": "Defaults",
+        "ansible-navigator.ansible.config.path": "Not set",
+        "ansible-navigator.ansible.doc.help": "Defaults",
+        "ansible-navigator.ansible.doc.plugin.name": "Not set",
+        "ansible-navigator.ansible.doc.plugin.type": "Defaults",
+        "ansible-navigator.ansible.inventory.entries": "Command line",
+        "ansible-navigator.ansible.inventory.help": "Defaults",
+        "ansible-navigator.ansible.playbook.help": "Defaults",
+        "ansible-navigator.ansible.playbook.path": "Command line",
+        "ansible-navigator.app": "Command line",
+        "ansible-navigator.collection-doc-cache-path": "Defaults",
+        "ansible-navigator.color.enable": "Defaults",
+        "ansible-navigator.color.osc4": "Defaults",
+        "ansible-navigator.editor.command": "Defaults",
+        "ansible-navigator.editor.console": "Defaults",
+        "ansible-navigator.enable-prompts": "Defaults",
+        "ansible-navigator.exec.command": "Defaults",
+        "ansible-navigator.exec.shell": "Defaults",
+        "ansible-navigator.execution-environment.container-engine": "Settings file",
+        "ansible-navigator.execution-environment.container-options": "Not set",
+        "ansible-navigator.execution-environment.enabled": "Command line",
+        "ansible-navigator.execution-environment.environment-variables.pass": "Not set",
+        "ansible-navigator.execution-environment.environment-variables.set": "Not set",
+        "ansible-navigator.execution-environment.image": "Settings file",
+        "ansible-navigator.execution-environment.pull.arguments": "Not set",
+        "ansible-navigator.execution-environment.pull.policy": "Settings file",
+        "ansible-navigator.execution-environment.volume-mounts": "Settings file",
+        "ansible-navigator.format": "Defaults",
+        "ansible-navigator.images.details": "Defaults",
+        "ansible-navigator.inventory-columns": "Not set",
+        "ansible-navigator.logging.append": "Defaults",
+        "ansible-navigator.logging.file": "Defaults",
+        "ansible-navigator.logging.level": "Defaults",
+        "ansible-navigator.mode": "Command line",
+        "ansible-navigator.playbook-artifact.enable": "Defaults",
+        "ansible-navigator.playbook-artifact.replay": "Not set",
+        "ansible-navigator.playbook-artifact.save-as": "Defaults",
+        "ansible-navigator.settings.effective": "Defaults",
+        "ansible-navigator.settings.sample": "Defaults",
+        "ansible-navigator.settings.schema": "Defaults",
+        "ansible-navigator.settings.sources": "Defaults",
+        "ansible-navigator.time-zone": "Defaults",
+        "settings_file_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible-navigator.yml",
+        "settings_file_source": "Search path"
+    },
+    "status": "failed",
+    "status_color": 9,
+    "stdout": [
+        "\u001b[0;34mansible-playbook [core 2.19.0]\u001b[0m",
+        "\u001b[0;34m  config file = /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible.cfg\u001b[0m",
+        "\u001b[0;34m  configured module search path = ['/home/azureuser/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']\u001b[0m",
+        "\u001b[0;34m  ansible python module location = /home/azureuser/.venv/votingAppInfraAutomation-VM/lib/python3.12/site-packages/ansible\u001b[0m",
+        "\u001b[0;34m  ansible collection location = /home/azureuser/.ansible/collections:/usr/share/ansible/collections\u001b[0m",
+        "\u001b[0;34m  executable location = /home/azureuser/.venv/votingAppInfraAutomation-VM/bin/ansible-playbook\u001b[0m",
+        "\u001b[0;34m  python version = 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0] (/home/azureuser/.venv/votingAppInfraAutomation-VM/bin/python3)\u001b[0m",
+        "\u001b[0;34m  jinja version = 3.1.6\u001b[0m",
+        "\u001b[0;34m  pyyaml version = 6.0.2 (with libyaml v0.2.5)\u001b[0m",
+        "\u001b[0;34mUsing /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible.cfg as config file\u001b[0m",
+        "\u001b[0;34mhost_list declined parsing /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory as it did not pass its verify_file() method\u001b[0m",
+        "\u001b[0;34mscript declined parsing /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory as it did not pass its verify_file() method\u001b[0m",
+        "\u001b[0;34mauto declined parsing /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory as it did not pass its verify_file() method\u001b[0m",
+        "\u001b[0;34mParsed /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory inventory source with ini plugin\u001b[0m",
+        "\u001b[0;34mSkipping callback 'default', as we already have a stdout callback.\u001b[0m",
+        "\u001b[0;34mSkipping callback 'minimal', as we already have a stdout callback.\u001b[0m",
+        "\u001b[0;34mSkipping callback 'oneline', as we already have a stdout callback.\u001b[0m",
+        "",
+        "PLAYBOOK: automate-example-voting-app.yml **************************************",
+        "\u001b[0;34m1 plays in /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml\u001b[0m",
+        "",
+        "PLAY [Test example voting app role] ********************************************",
+        "",
+        "TASK [Gathering Facts] *********************************************************",
+        "\u001b[1;30mtask path: /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml:2\u001b[0m",
+        "\u001b[0;31m[ERROR]: Task failed: Error processing keyword 'become_user': 'ansible_user_id' is undefined\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31mTask failed.\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31m<<< caused by >>>\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31mError processing keyword 'become_user': 'ansible_user_id' is undefined\u001b[0m",
+        "\u001b[0;31mOrigin: /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml:4:16\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31m2 - name: Test example voting app role\u001b[0m",
+        "\u001b[0;31m3   hosts: azure_vms\u001b[0m",
+        "\u001b[0;31m4   become_user: \"{{ ansible_user_id }}\"\u001b[0m",
+        "\u001b[0;31m                 ^ column 16\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31mfatal: [votingAppInfraAutomation-VM]: FAILED! => {\u001b[0m",
+        "\u001b[0;31m    \"changed\": false,\u001b[0m",
+        "\u001b[0;31m    \"msg\": \"Task failed: Error processing keyword 'become_user': 'ansible_user_id' is undefined\"\u001b[0m",
+        "\u001b[0;31m}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;31mvotingAppInfraAutomation-VM\u001b[0m : ok=0    changed=0    unreachable=0    \u001b[0;31mfailed=1   \u001b[0m skipped=0    rescued=0    ignored=0   "
+    ],
+    "version": "2.0.0"
+}

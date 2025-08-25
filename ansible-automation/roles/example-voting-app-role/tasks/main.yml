@@ -1,154 +1,227 @@
-#SPDX-License-Identifier: MIT-0
----
-# tasks file for example-voting-app-role
-    - name: ensure git is installed
+    - name: add user for deployment
+      ansible.builtin.user:
+        name: deployuser
+
+    - name: Ensure git is installed
       ansible.builtin.package:
         name: git
         state: present
 
-    - name: clone git project repo
-      ansible.builtin.git:
-        repo: "https://github.com/dockersamples/example-voting-app.git"
-        dest: "{{ ansible_env.HOME }}/example-voting-app"
-        version: main
-        clone: true
-        update: true
+    - name: make sure directories Voting-App-Infrastructure-Automation/ansible-automation exists             
+      ansible.builtin.file:   
+        path: "{{ voting_app_demo_user_dir }}"
+        state: directory
+        mode: "0755"
+        owner: "{{ voting_app_demo_user }}"
+        group: "{{ voting_app_demo_user }}"
 
-    - name: ensure python3 and python3-pip are installed
+    - name: Check if git repo directory exists
+      ansible.builtin.stat:
+        path: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation/.git"
+      register: repo_dir
+
+    - name: Remove existing directory if not a valid git repo
+      ansible.builtin.file:
+        path: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation"
+        state: absent
+      when: not repo_dir.stat.exists
+
+    - name: Clone git project repo
+      ansible.builtin.git:
+        repo: "{{ voting_app_repo }}"
+        dest: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation"
+        version: main
+        update: true
+        clone: true
+
+    - name: Ensure python3 and python3-pip are installed
       ansible.builtin.package:
         name:
           - python3
           - python3-pip
         state: present
 
-    - name: Set ostype fact
+    - name: Set ostype and osdistro facts
       set_fact:
         ostype: "{{ ansible_facts.os_family | lower }}"
         osdistro: "{{ ansible_facts.distribution | lower }}"
 
-    - name: Delete conflicting packages for Debian
+    - name: Remove old Docker repo source files to prevent conflicts (Debian)
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/apt/sources.list.d/docker.list
+        - /etc/apt/sources.list.d/docker-ce.list
+      when: osdistro in ['debian', 'ubuntu']
+
+    - name: Delete conflicting packages for Debian family
       ansible.builtin.package:
-        name: "{{ deb_confl_pack }}"
+        name: "{{ docker_remove_conflicts.debian }}"
         purge: true
         state: absent
-      when: osdistro == 'debian'
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Delete conflicting packages for RedHat based systems
+    - name: Delete conflicting packages for RedHat family
       ansible.builtin.package:
-        name: "{{ rh_confl_pack }}"
+        name: "{{ docker_remove_conflicts.redhat }}"
         purge: true
         state: absent
       when: ostype == 'redhat'
 
-    - name: Install prerequisite packages for Debian
-      ansible.builtin.package:
-        name: "{{ deb_prereq_pack }}"
-        state: present
-      when: osdistro == 'debian'
+    - name: Remove legacy Docker GPG keys from apt-key (Debian)
+      ansible.builtin.shell: |
+        apt-key list | awk '/Docker Release/ {getline; print $9}' | xargs -r apt-key del
+      changed_when: false
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Install prerequisite packages for RedHat based systems
+    - name: Remove Docker GPG keys from common keyrings (Debian)
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/apt/keyrings/docker.gpg
+        - /usr/share/keyrings/docker-archive-keyring.gpg
+      when: osdistro in ['debian', 'ubuntu']
+
+    - name: Remove Docker GPG key file (RedHat)
+      ansible.builtin.file:
+        path: /etc/pki/rpm-gpg/RPM-GPG-KEY-Docker
+        state: absent
+      when: ostype == 'redhat'
+
+    - name: Remove conflicting Docker YUM repo files (RedHat)
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/yum.repos.d/docker.repo
+        - /etc/yum.repos.d/docker-ce.repo
+        - /etc/yum.repos.d/docker-main.repo
+        - /etc/yum.repos.d/docker-compose.repo
+        - /etc/yum.repos.d/Docker.repo
+        - /etc/yum.repos.d/Docker-CE.repo
+      when: ostype == 'redhat'
+
+    - name: Clean up old cached YUM/DNF repo data (RedHat)
+      ansible.builtin.command: yum clean all
+      changed_when: false
+      when: ostype == 'redhat'
+
+    - name: Install prerequisite packages for Debian family
       ansible.builtin.package:
-        name: "{{ rh_prereq_pack }}"
+        name: "{{ docker_prerequisites.debian }}"
+        state: present
+        update_cache: yes
+      when: osdistro in ['debian', 'ubuntu']
+
+    - name: Install prerequisite packages for RedHat family
+      ansible.builtin.package:
+        name: "{{ docker_prerequisites.redhat }}"
+        state: present
+        update_cache: yes
+      when: ostype == 'redhat'
+
+    - name: Ensure /etc/apt/keyrings exists
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+      when: osdistro in ['debian', 'ubuntu']
+
+    - name: Install YUM utilities for managing repositories (if not present)
+      ansible.builtin.package:
+        name: yum-utils
         state: present
       when: ostype == 'redhat'
 
-    - name: Add Docker repo for RedHat based systems
+    - name: Add Docker Official Repository (RedHat)
       ansible.builtin.yum_repository:
         name: docker-ce-stable
-        baseurl: "{{ rh_docker_repo }}"
-        gpgcheck: true
-        gpgkey: "{{ rh_docker_gpgkey }}"
-        enabled: true
+        description: Docker CE Stable - $basearch
+        baseurl: "{{ docker_repo.redhat }}"
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: "{{ docker_gpg_key_url.redhat }}"
       when: ostype == 'redhat'
 
-    - name: Download Docker GPG key for Ubuntu
-      ansible.builtin.apt_key:
-        url: "{{ ubuntu_docker_gpgkey }}"
-        state: present
-        keyring: /usr/share/keyrings/docker-archive-keyring.gpg
-      when: osdistro == 'ubuntu'
+    - name: Download and store Docker GPG key (Debian)
+      ansible.builtin.shell: |
+        curl -fsSL {{ docker_gpg_key_url.debian }} | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+        chmod a+r /etc/apt/keyrings/docker.gpg
+      args:
+        creates: /etc/apt/keyrings/docker.gpg
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Add Docker APT repository for Ubuntu
+    - name: Add Docker repository (Debian)
       ansible.builtin.apt_repository:
-        repo: "{{ ubuntu_docker_repo }}"
-        state: present
-        filename: docker
-        update_cache: true
-      when: osdistro == 'ubuntu'
-
-    - name: Download Docker GPG key for Debian
-      ansible.builtin.apt_key:
-        url: "{{ deb_docker_gpgkey }}"
-        state: present
-        keyring: /usr/share/keyrings/docker-archive-keyring.gpg
-      when: osdistro == 'debian'
-
-    - name: Add Docker APT repository for Debian
-      ansible.builtin.apt_repository:
-        repo: "{{ deb_docker_repo }}"
+        repo: "{{ docker_repo.debian }}"
         state: present
         filename: docker
         update_cache: yes
-      when: osdistro == 'debian'
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Update APT cache
+    - name: Update APT cache (Debian)
       ansible.builtin.apt:
         update_cache: true
         cache_valid_time: 3600
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Install docker packages for Ubuntu
+    - name: Install Docker packages for Debian family
       ansible.builtin.package:
-        name: "{{ ubuntu_docker_pack }}"
+        name: "{{ docker_packages.debian }}"
         state: present
-      when: osdistro == 'ubuntu'
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Install docker packages for Debian
+    - name: Install Docker packages for RedHat family
       ansible.builtin.package:
-        name: "{{ deb_docker_pack }}"
-        state: present
-      when: osdistro == 'debian'
-
-    - name: Install docker packages for RedHat based systems
-      ansible.builtin.package:
-        name: "{{ rh_docker_pack }}"
+        name: "{{ docker_packages.redhat }}"
         state: present
       when: ostype == 'redhat'
 
-    - name: add user to docker group
+    - name: Add user to docker group
       ansible.builtin.user:
         name: "{{ ansible_user | default(lookup('env','USER')) }}"
         groups: docker
         append: true
 
-    - name: Start and enable docker service for Debian
+    - name: Start and enable docker service for Debian family
       ansible.builtin.service:
-        name: "{{ deb_docker_service }}"
+        name: docker
         state: started
         enabled: true
-      when: osdistro == 'debian'
+      when: osdistro in ['debian', 'ubuntu']
 
-    - name: Start and enable docker service for Ubuntu
+    - name: Start and enable docker service for RedHat family
       ansible.builtin.service:
-        name: "{{ ubuntu_docker_service }}"
-        state: started
-        enabled: true
-      when: osdistro == 'ubuntu'
-
-    - name: Start and enable docker service for RedHat based systems
-      ansible.builtin.service:
-        name: "{{ rh_docker_service }}"
+        name: docker
         state: started
         enabled: true
       when: ostype == 'redhat'
 
-    - name: applying docker-compose template
+    - name: Apply docker-compose template
       ansible.builtin.template:
-        src: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/templates/docker-compose.yml.j2"
-        dest: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files/docker-compose.yml"
+        src: docker-compose.yml.j2
+        dest: "{{ voting_app_demo_user_dir }}/docker-compose.yml"
         mode: "0644"
+
+    - name: List files in project_src directory
+      ansible.builtin.command:
+        cmd: ls -l "{{ voting_app_demo_user_dir }}"
+      register: ls_output
+
+    - debug:
+        var: ls_output.stdout_lines
+
+    - name: Verify docker-compose.yml exists
+      ansible.builtin.stat:
+        path: "{{ voting_app_demo_user_dir }}/docker-compose.yml"
+      register: compose_file_stat
+
+    - debug:
+        var: compose_file_stat
+
     - name: Run voting app stack
       community.docker.docker_compose_v2:
-        project_src: "{{ ansible_env.HOME }}/example-voting-app/ansible-automation/roles/example-voting-app-role/files"
+        project_src: "{{ voting_app_demo_user_dir }}"
         state: present
-        build: always
-        restarted: true 

@@ -1,71 +1,60 @@
-# vars/main.yml
+voting_app_repo: "https://github.com/dockersamples/example-voting-app.git"
 
-deb_confl_pack:
-  - docker
-  - docker-engine
-  - docker-ce
-  - docker-ce-cli
-  - docker.io
-  - containerd
-  - runc
+voting_app_demo_user: deployuser
 
-rh_confl_pack:
-  - docker
-  - docker-client
-  - docker-client-latest
-  - docker-common
-  - docker-latest
-  - docker-latest-logrotate
-  - docker-logrotate
-  - docker-engine
-  - podman
-  - runc
+voting_app_demo_user_home: "/home/{{ voting_app_demo_user }}"
 
-deb_prereq_pack:
-  - ca-certificates
-  - curl
-  - gnupg
-  - lsb-release
-  - apt-transport-https
-  - software-properties-common
+voting_app_demo_user_dir: "{{ voting_app_demo_user_home }}/Voting-App-Infrastructure-Automation/ansible-automation"
 
-rh_prereq_pack:
-  - dnf-plugins-core
-  - device-mapper-persistent-data
-  - lvm2
-  - ca-certificates
-  - curl
-  - tar
-  - glibc
+docker_remove_conflicts:
+  debian:
+    - docker.io
+    - docker-doc
+    - docker-compose
+    - docker-compose-v2
+    - podman-docker
+    - containerd
+    - runc
+  redhat:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-engine
+    - podman
+    - podman-docker
 
-rh_docker_repo: "https://download.docker.com/linux/centos/$releasever/$basearch/stable"
-rh_docker_gpgkey: "https://download.docker.com/linux/centos/gpg"
+docker_prerequisites:
+  debian:
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+  redhat:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
 
-deb_docker_repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
-deb_docker_gpgkey: "https://download.docker.com/linux/debian/gpg"
+docker_gpg_key_url:
+  debian: "https://download.docker.com/linux/ubuntu/gpg"
+  redhat: "https://download.docker.com/linux/centos/gpg"
 
-ubuntu_docker_repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-ubuntu_docker_gpgkey: "https://download.docker.com/linux/ubuntu/gpg"
+docker_repo:
+  debian: "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+  redhat: "https://download.docker.com/linux/centos/docker-ce.repo"
 
-deb_docker_pack:
-  - docker.io
-  - docker-buildx-plugin
-  - docker-compose-plugin
-
-ubuntu_docker_pack:
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-  - docker-buildx-plugin
-  - docker-compose-plugin
-
-rh_docker_pack:
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-  - docker-buildx-plugin
-  - docker-compose-plugin
-
-rh_docker_service: docker
-deb_docker_service: docker
-ubuntu_docker_service: docker
+docker_packages:
+  debian:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+  redhat:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin

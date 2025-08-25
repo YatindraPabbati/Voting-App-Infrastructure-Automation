@@ -1,0 +1,1923 @@
+{
+    "plays": [
+        {
+            "__play_name": "Test example voting app role",
+            "name": "Test example voting app role",
+            "pattern": "azure_vms",
+            "play": "Test example voting app role",
+            "play_pattern": "azure_vms",
+            "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+            "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+            "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+            "tasks": [
+                {
+                    "__changed": false,
+                    "__duration": "3s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 0,
+                    "__result": "Ok",
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "duration": 3.423338,
+                    "end": "2025-08-21T12:09:30.678282+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "_ansible_verbose_override": true,
+                        "ansible_facts": {
+                            "ansible_all_ipv4_addresses": [
+                                "172.17.0.1",
+                                "10.0.0.4"
+                            ],
+                            "ansible_all_ipv6_addresses": [
+                                "fe80::e048:97ff:fe4b:e180",
+                                "fe80::7e1e:52ff:fe65:4b6d"
+                            ],
+                            "ansible_apparmor": {
+                                "status": "enabled"
+                            },
+                            "ansible_architecture": "x86_64",
+                            "ansible_bios_date": "05/13/2024",
+                            "ansible_bios_vendor": "Microsoft Corporation",
+                            "ansible_bios_version": "Hyper-V UEFI Release v4.1",
+                            "ansible_board_asset_tag": "None",
+                            "ansible_board_name": "Virtual Machine",
+                            "ansible_board_serial": "0000-0010-6167-2184-0707-2196-15",
+                            "ansible_board_vendor": "Microsoft Corporation",
+                            "ansible_board_version": "Hyper-V UEFI Release v4.1",
+                            "ansible_chassis_asset_tag": "7783-7084-3265-9085-8269-3286-77",
+                            "ansible_chassis_serial": "7969-0847-7920-5213-6782-4060-82",
+                            "ansible_chassis_vendor": "Microsoft Corporation",
+                            "ansible_chassis_version": "Hyper-V UEFI Release v4.1",
+                            "ansible_cmdline": {
+                                "BOOT_IMAGE": "/vmlinuz-6.11.0-1018-azure",
+                                "console": "ttyS0",
+                                "earlyprintk": "ttyS0",
+                                "nvme_core.io_timeout": "240",
+                                "panic": "-1",
+                                "ro": true,
+                                "root": "PARTUUID=b64e0d51-c5e6-43a0-adab-9d3434918512"
+                            },
+                            "ansible_date_time": {
+                                "date": "2025-08-21",
+                                "day": "21",
+                                "epoch": "1755778170",
+                                "epoch_int": "1755778170",
+                                "hour": "12",
+                                "iso8601": "2025-08-21T12:09:30Z",
+                                "iso8601_basic": "20250821T120930000234",
+                                "iso8601_basic_short": "20250821T120930",
+                                "iso8601_micro": "2025-08-21T12:09:30.000234Z",
+                                "minute": "09",
+                                "month": "08",
+                                "second": "30",
+                                "time": "12:09:30",
+                                "tz": "UTC",
+                                "tz_dst": "UTC",
+                                "tz_offset": "+0000",
+                                "weekday": "Thursday",
+                                "weekday_number": "4",
+                                "weeknumber": "33",
+                                "year": "2025"
+                            },
+                            "ansible_default_ipv4": {
+                                "address": "10.0.0.4",
+                                "alias": "eth0",
+                                "broadcast": "",
+                                "gateway": "10.0.0.1",
+                                "interface": "eth0",
+                                "macaddress": "7c:1e:52:65:4b:6d",
+                                "mtu": 1500,
+                                "netmask": "255.255.255.0",
+                                "network": "10.0.0.0",
+                                "prefix": "24",
+                                "type": "ether"
+                            },
+                            "ansible_default_ipv6": {},
+                            "ansible_device_links": {
+                                "ids": {
+                                    "sda": [
+                                        "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8",
+                                        "scsi-36002248032fce9cdb131a9363b7209c8",
+                                        "wwn-0x6002248032fce9cdb131a9363b7209c8"
+                                    ],
+                                    "sda1": [
+                                        "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part1",
+                                        "scsi-36002248032fce9cdb131a9363b7209c8-part1",
+                                        "wwn-0x6002248032fce9cdb131a9363b7209c8-part1"
+                                    ],
+                                    "sda14": [
+                                        "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part14",
+                                        "scsi-36002248032fce9cdb131a9363b7209c8-part14",
+                                        "wwn-0x6002248032fce9cdb131a9363b7209c8-part14"
+                                    ],
+                                    "sda15": [
+                                        "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part15",
+                                        "scsi-36002248032fce9cdb131a9363b7209c8-part15",
+                                        "wwn-0x6002248032fce9cdb131a9363b7209c8-part15"
+                                    ],
+                                    "sda16": [
+                                        "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part16",
+                                        "scsi-36002248032fce9cdb131a9363b7209c8-part16",
+                                        "wwn-0x6002248032fce9cdb131a9363b7209c8-part16"
+                                    ],
+                                    "sdb": [
+                                        "scsi-14d53465420202020f95727aa0d6cba4882b3b38fd9d914f2",
+                                        "scsi-360022480f95727aa0d6cb38fd9d914f2",
+                                        "wwn-0x60022480f95727aa0d6cb38fd9d914f2"
+                                    ],
+                                    "sdb1": [
+                                        "scsi-14d53465420202020f95727aa0d6cba4882b3b38fd9d914f2-part1",
+                                        "scsi-360022480f95727aa0d6cb38fd9d914f2-part1",
+                                        "wwn-0x60022480f95727aa0d6cb38fd9d914f2-part1"
+                                    ],
+                                    "sr0": [
+                                        "scsi-14d534654202020207305e3437703544694957d7ced624a7d"
+                                    ]
+                                },
+                                "labels": {
+                                    "sda1": [
+                                        "cloudimg-rootfs"
+                                    ],
+                                    "sda15": [
+                                        "UEFI"
+                                    ],
+                                    "sda16": [
+                                        "BOOT"
+                                    ]
+                                },
+                                "masters": {},
+                                "uuids": {
+                                    "sda1": [
+                                        "5b618de7-3de2-4d29-9615-b61ae39a7ef9"
+                                    ],
+                                    "sda15": [
+                                        "200A-7E9B"
+                                    ],
+                                    "sda16": [
+                                        "fada2ca4-ab5b-4a07-9d2a-3c28bb7a877f"
+                                    ],
+                                    "sdb1": [
+                                        "ca5d84c8-f594-43f7-b4ed-658c05e8fc07"
+                                    ]
+                                }
+                            },
+                            "ansible_devices": {
+                                "loop0": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "1",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "4096",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop1": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop2": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop3": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop4": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop5": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop6": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "loop7": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": null,
+                                    "partitions": {},
+                                    "removable": "0",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "none",
+                                    "sectors": 0,
+                                    "sectorsize": "512",
+                                    "size": "0.00 Bytes",
+                                    "support_discard": "0",
+                                    "vendor": null,
+                                    "virtual": 1
+                                },
+                                "sda": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [
+                                            "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8",
+                                            "scsi-36002248032fce9cdb131a9363b7209c8",
+                                            "wwn-0x6002248032fce9cdb131a9363b7209c8"
+                                        ],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": "Virtual Disk",
+                                    "partitions": {
+                                        "sda1": {
+                                            "holders": [],
+                                            "links": {
+                                                "ids": [
+                                                    "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part1",
+                                                    "scsi-36002248032fce9cdb131a9363b7209c8-part1",
+                                                    "wwn-0x6002248032fce9cdb131a9363b7209c8-part1"
+                                                ],
+                                                "labels": [
+                                                    "cloudimg-rootfs"
+                                                ],
+                                                "masters": [],
+                                                "uuids": [
+                                                    "5b618de7-3de2-4d29-9615-b61ae39a7ef9"
+                                                ]
+                                            },
+                                            "sectors": 60817375,
+                                            "sectorsize": 512,
+                                            "size": "29.00 GB",
+                                            "start": "2099200",
+                                            "uuid": "5b618de7-3de2-4d29-9615-b61ae39a7ef9"
+                                        },
+                                        "sda14": {
+                                            "holders": [],
+                                            "links": {
+                                                "ids": [
+                                                    "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part14",
+                                                    "scsi-36002248032fce9cdb131a9363b7209c8-part14",
+                                                    "wwn-0x6002248032fce9cdb131a9363b7209c8-part14"
+                                                ],
+                                                "labels": [],
+                                                "masters": [],
+                                                "uuids": []
+                                            },
+                                            "sectors": 8192,
+                                            "sectorsize": 512,
+                                            "size": "4.00 MB",
+                                            "start": "2048",
+                                            "uuid": null
+                                        },
+                                        "sda15": {
+                                            "holders": [],
+                                            "links": {
+                                                "ids": [
+                                                    "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part15",
+                                                    "scsi-36002248032fce9cdb131a9363b7209c8-part15",
+                                                    "wwn-0x6002248032fce9cdb131a9363b7209c8-part15"
+                                                ],
+                                                "labels": [
+                                                    "UEFI"
+                                                ],
+                                                "masters": [],
+                                                "uuids": [
+                                                    "200A-7E9B"
+                                                ]
+                                            },
+                                            "sectors": 217088,
+                                            "sectorsize": 512,
+                                            "size": "106.00 MB",
+                                            "start": "10240",
+                                            "uuid": "200A-7E9B"
+                                        },
+                                        "sda16": {
+                                            "holders": [],
+                                            "links": {
+                                                "ids": [
+                                                    "scsi-14d5346542020202032fce9cdb1316942a750a9363b7209c8-part16",
+                                                    "scsi-36002248032fce9cdb131a9363b7209c8-part16",
+                                                    "wwn-0x6002248032fce9cdb131a9363b7209c8-part16"
+                                                ],
+                                                "labels": [
+                                                    "BOOT"
+                                                ],
+                                                "masters": [],
+                                                "uuids": [
+                                                    "fada2ca4-ab5b-4a07-9d2a-3c28bb7a877f"
+                                                ]
+                                            },
+                                            "sectors": 1869825,
+                                            "sectorsize": 512,
+                                            "size": "913.00 MB",
+                                            "start": "227328",
+                                            "uuid": "fada2ca4-ab5b-4a07-9d2a-3c28bb7a877f"
+                                        }
+                                    },
+                                    "removable": "0",
+                                    "rotational": "1",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "mq-deadline",
+                                    "sectors": 62916608,
+                                    "sectorsize": "512",
+                                    "size": "30.00 GB",
+                                    "support_discard": "2097152",
+                                    "vendor": "Msft",
+                                    "virtual": 1,
+                                    "wwn": "0x6002248032fce9cdb131a9363b7209c8"
+                                },
+                                "sdb": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [
+                                            "scsi-14d53465420202020f95727aa0d6cba4882b3b38fd9d914f2",
+                                            "scsi-360022480f95727aa0d6cb38fd9d914f2",
+                                            "wwn-0x60022480f95727aa0d6cb38fd9d914f2"
+                                        ],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": "Virtual Disk",
+                                    "partitions": {
+                                        "sdb1": {
+                                            "holders": [],
+                                            "links": {
+                                                "ids": [
+                                                    "scsi-14d53465420202020f95727aa0d6cba4882b3b38fd9d914f2-part1",
+                                                    "scsi-360022480f95727aa0d6cb38fd9d914f2-part1",
+                                                    "wwn-0x60022480f95727aa0d6cb38fd9d914f2-part1"
+                                                ],
+                                                "labels": [],
+                                                "masters": [],
+                                                "uuids": [
+                                                    "ca5d84c8-f594-43f7-b4ed-658c05e8fc07"
+                                                ]
+                                            },
+                                            "sectors": 8384512,
+                                            "sectorsize": 512,
+                                            "size": "4.00 GB",
+                                            "start": "2048",
+                                            "uuid": "ca5d84c8-f594-43f7-b4ed-658c05e8fc07"
+                                        }
+                                    },
+                                    "removable": "0",
+                                    "rotational": "1",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "mq-deadline",
+                                    "sectors": 8388608,
+                                    "sectorsize": "512",
+                                    "size": "4.00 GB",
+                                    "support_discard": "2097152",
+                                    "vendor": "Msft",
+                                    "virtual": 1,
+                                    "wwn": "0x60022480f95727aa0d6cb38fd9d914f2"
+                                },
+                                "sr0": {
+                                    "holders": [],
+                                    "host": "",
+                                    "links": {
+                                        "ids": [
+                                            "scsi-14d534654202020207305e3437703544694957d7ced624a7d"
+                                        ],
+                                        "labels": [],
+                                        "masters": [],
+                                        "uuids": []
+                                    },
+                                    "model": "Virtual DVD-ROM",
+                                    "partitions": {},
+                                    "removable": "1",
+                                    "rotational": "0",
+                                    "sas_address": null,
+                                    "sas_device_handle": null,
+                                    "scheduler_mode": "mq-deadline",
+                                    "sectors": 314,
+                                    "sectorsize": "2048",
+                                    "size": "628.00 KB",
+                                    "support_discard": "0",
+                                    "vendor": "Msft",
+                                    "virtual": 1
+                                }
+                            },
+                            "ansible_distribution": "Ubuntu",
+                            "ansible_distribution_file_parsed": true,
+                            "ansible_distribution_file_path": "/etc/os-release",
+                            "ansible_distribution_file_variety": "Debian",
+                            "ansible_distribution_major_version": "24",
+                            "ansible_distribution_release": "noble",
+                            "ansible_distribution_version": "24.04",
+                            "ansible_dns": {
+                                "nameservers": [
+                                    "127.0.0.53"
+                                ],
+                                "options": {
+                                    "edns0": true,
+                                    "trust-ad": true
+                                },
+                                "search": [
+                                    "tp2wyo4yza2udggult4seaunod.zx.internal.cloudapp.net"
+                                ]
+                            },
+                            "ansible_docker0": {
+                                "active": false,
+                                "device": "docker0",
+                                "features": {
+                                    "esp_hw_offload": "off [fixed]",
+                                    "esp_tx_csum_hw_offload": "off [fixed]",
+                                    "fcoe_mtu": "off [fixed]",
+                                    "generic_receive_offload": "on",
+                                    "generic_segmentation_offload": "on",
+                                    "highdma": "on",
+                                    "hsr_dup_offload": "off [fixed]",
+                                    "hsr_fwd_offload": "off [fixed]",
+                                    "hsr_tag_ins_offload": "off [fixed]",
+                                    "hsr_tag_rm_offload": "off [fixed]",
+                                    "hw_tc_offload": "off [fixed]",
+                                    "l2_fwd_offload": "off [fixed]",
+                                    "large_receive_offload": "off [fixed]",
+                                    "loopback": "off [fixed]",
+                                    "macsec_hw_offload": "off [fixed]",
+                                    "netns_local": "on [fixed]",
+                                    "ntuple_filters": "off [fixed]",
+                                    "receive_hashing": "off [fixed]",
+                                    "rx_all": "off [fixed]",
+                                    "rx_checksumming": "off [fixed]",
+                                    "rx_fcs": "off [fixed]",
+                                    "rx_gro_hw": "off [fixed]",
+                                    "rx_gro_list": "off",
+                                    "rx_udp_gro_forwarding": "off",
+                                    "rx_udp_tunnel_port_offload": "off [fixed]",
+                                    "rx_vlan_filter": "off [fixed]",
+                                    "rx_vlan_offload": "off [fixed]",
+                                    "rx_vlan_stag_filter": "off [fixed]",
+                                    "rx_vlan_stag_hw_parse": "off [fixed]",
+                                    "scatter_gather": "on",
+                                    "tcp_segmentation_offload": "on",
+                                    "tls_hw_record": "off [fixed]",
+                                    "tls_hw_rx_offload": "off [fixed]",
+                                    "tls_hw_tx_offload": "off [fixed]",
+                                    "tx_checksum_fcoe_crc": "off [fixed]",
+                                    "tx_checksum_ip_generic": "on",
+                                    "tx_checksum_ipv4": "off [fixed]",
+                                    "tx_checksum_ipv6": "off [fixed]",
+                                    "tx_checksum_sctp": "off [fixed]",
+                                    "tx_checksumming": "on",
+                                    "tx_esp_segmentation": "on",
+                                    "tx_fcoe_segmentation": "on",
+                                    "tx_gre_csum_segmentation": "on",
+                                    "tx_gre_segmentation": "on",
+                                    "tx_gso_list": "on",
+                                    "tx_gso_partial": "on",
+                                    "tx_gso_robust": "on",
+                                    "tx_ipxip4_segmentation": "on",
+                                    "tx_ipxip6_segmentation": "on",
+                                    "tx_lockless": "on [fixed]",
+                                    "tx_nocache_copy": "off",
+                                    "tx_scatter_gather": "on",
+                                    "tx_scatter_gather_fraglist": "on",
+                                    "tx_sctp_segmentation": "on",
+                                    "tx_tcp6_segmentation": "on",
+                                    "tx_tcp_ecn_segmentation": "on",
+                                    "tx_tcp_mangleid_segmentation": "on",
+                                    "tx_tcp_segmentation": "on",
+                                    "tx_tunnel_remcsum_segmentation": "on",
+                                    "tx_udp_segmentation": "on",
+                                    "tx_udp_tnl_csum_segmentation": "on",
+                                    "tx_udp_tnl_segmentation": "on",
+                                    "tx_vlan_offload": "on",
+                                    "tx_vlan_stag_hw_insert": "on",
+                                    "vlan_challenged": "off [fixed]"
+                                },
+                                "hw_timestamp_filters": [],
+                                "id": "8000.e248974be180",
+                                "interfaces": [],
+                                "ipv4": {
+                                    "address": "172.17.0.1",
+                                    "broadcast": "172.17.255.255",
+                                    "netmask": "255.255.0.0",
+                                    "network": "172.17.0.0",
+                                    "prefix": "16"
+                                },
+                                "ipv6": [
+                                    {
+                                        "address": "fe80::e048:97ff:fe4b:e180",
+                                        "prefix": "64",
+                                        "scope": "link"
+                                    }
+                                ],
+                                "macaddress": "e2:48:97:4b:e1:80",
+                                "mtu": 1500,
+                                "promisc": false,
+                                "speed": -1,
+                                "stp": false,
+                                "timestamping": [],
+                                "type": "bridge"
+                            },
+                            "ansible_domain": "internal.cloudapp.net",
+                            "ansible_effective_group_id": 0,
+                            "ansible_effective_user_id": 0,
+                            "ansible_eth0": {
+                                "active": true,
+                                "device": "eth0",
+                                "features": {
+                                    "esp_hw_offload": "off [fixed]",
+                                    "esp_tx_csum_hw_offload": "off [fixed]",
+                                    "fcoe_mtu": "off [fixed]",
+                                    "generic_receive_offload": "on",
+                                    "generic_segmentation_offload": "on",
+                                    "highdma": "on [fixed]",
+                                    "hsr_dup_offload": "off [fixed]",
+                                    "hsr_fwd_offload": "off [fixed]",
+                                    "hsr_tag_ins_offload": "off [fixed]",
+                                    "hsr_tag_rm_offload": "off [fixed]",
+                                    "hw_tc_offload": "off [fixed]",
+                                    "l2_fwd_offload": "off [fixed]",
+                                    "large_receive_offload": "off",
+                                    "loopback": "off [fixed]",
+                                    "macsec_hw_offload": "off [fixed]",
+                                    "netns_local": "off [fixed]",
+                                    "ntuple_filters": "off [fixed]",
+                                    "receive_hashing": "on",
+                                    "rx_all": "off [fixed]",
+                                    "rx_checksumming": "on",
+                                    "rx_fcs": "off [fixed]",
+                                    "rx_gro_hw": "off [fixed]",
+                                    "rx_gro_list": "off",
+                                    "rx_udp_gro_forwarding": "off",
+                                    "rx_udp_tunnel_port_offload": "off [fixed]",
+                                    "rx_vlan_filter": "off [fixed]",
+                                    "rx_vlan_offload": "on [fixed]",
+                                    "rx_vlan_stag_filter": "off [fixed]",
+                                    "rx_vlan_stag_hw_parse": "off [fixed]",
+                                    "scatter_gather": "on",
+                                    "tcp_segmentation_offload": "on",
+                                    "tls_hw_record": "off [fixed]",
+                                    "tls_hw_rx_offload": "off [fixed]",
+                                    "tls_hw_tx_offload": "off [fixed]",
+                                    "tx_checksum_fcoe_crc": "off [fixed]",
+                                    "tx_checksum_ip_generic": "off [fixed]",
+                                    "tx_checksum_ipv4": "on",
+                                    "tx_checksum_ipv6": "on",
+                                    "tx_checksum_sctp": "off [fixed]",
+                                    "tx_checksumming": "on",
+                                    "tx_esp_segmentation": "off [fixed]",
+                                    "tx_fcoe_segmentation": "off [fixed]",
+                                    "tx_gre_csum_segmentation": "off [fixed]",
+                                    "tx_gre_segmentation": "off [fixed]",
+                                    "tx_gso_list": "off [fixed]",
+                                    "tx_gso_partial": "off [fixed]",
+                                    "tx_gso_robust": "off [fixed]",
+                                    "tx_ipxip4_segmentation": "off [fixed]",
+                                    "tx_ipxip6_segmentation": "off [fixed]",
+                                    "tx_lockless": "off [fixed]",
+                                    "tx_nocache_copy": "off",
+                                    "tx_scatter_gather": "on",
+                                    "tx_scatter_gather_fraglist": "off [fixed]",
+                                    "tx_sctp_segmentation": "off [fixed]",
+                                    "tx_tcp6_segmentation": "on",
+                                    "tx_tcp_ecn_segmentation": "off [fixed]",
+                                    "tx_tcp_mangleid_segmentation": "off",
+                                    "tx_tcp_segmentation": "on",
+                                    "tx_tunnel_remcsum_segmentation": "off [fixed]",
+                                    "tx_udp_segmentation": "off [fixed]",
+                                    "tx_udp_tnl_csum_segmentation": "off [fixed]",
+                                    "tx_udp_tnl_segmentation": "off [fixed]",
+                                    "tx_vlan_offload": "on [fixed]",
+                                    "tx_vlan_stag_hw_insert": "off [fixed]",
+                                    "vlan_challenged": "off [fixed]"
+                                },
+                                "hw_timestamp_filters": [],
+                                "ipv4": {
+                                    "address": "10.0.0.4",
+                                    "broadcast": "",
+                                    "netmask": "255.255.255.0",
+                                    "network": "10.0.0.0",
+                                    "prefix": "24"
+                                },
+                                "ipv6": [
+                                    {
+                                        "address": "fe80::7e1e:52ff:fe65:4b6d",
+                                        "prefix": "64",
+                                        "scope": "link"
+                                    }
+                                ],
+                                "macaddress": "7c:1e:52:65:4b:6d",
+                                "module": "hv_netvsc",
+                                "mtu": 1500,
+                                "pciid": "7c1e5265-4b6d-7c1e-5265-4b6d7c1e5265",
+                                "promisc": false,
+                                "speed": 40000,
+                                "timestamping": [],
+                                "type": "ether"
+                            },
+                            "ansible_fibre_channel_wwn": [],
+                            "ansible_fips": false,
+                            "ansible_flags": [
+                                "fpu",
+                                "vme",
+                                "de",
+                                "pse",
+                                "tsc",
+                                "msr",
+                                "pae",
+                                "mce",
+                                "cx8",
+                                "apic",
+                                "sep",
+                                "mtrr",
+                                "pge",
+                                "mca",
+                                "cmov",
+                                "pat",
+                                "pse36",
+                                "clflush",
+                                "mmx",
+                                "fxsr",
+                                "sse",
+                                "sse2",
+                                "ss",
+                                "syscall",
+                                "nx",
+                                "pdpe1gb",
+                                "rdtscp",
+                                "lm",
+                                "constant_tsc",
+                                "rep_good",
+                                "nopl",
+                                "xtopology",
+                                "cpuid",
+                                "aperfmperf",
+                                "tsc_known_freq",
+                                "pni",
+                                "pclmulqdq",
+                                "ssse3",
+                                "fma",
+                                "cx16",
+                                "pcid",
+                                "sse4_1",
+                                "sse4_2",
+                                "x2apic",
+                                "movbe",
+                                "popcnt",
+                                "aes",
+                                "xsave",
+                                "avx",
+                                "f16c",
+                                "rdrand",
+                                "hypervisor",
+                                "lahf_lm",
+                                "abm",
+                                "3dnowprefetch",
+                                "pti",
+                                "fsgsbase",
+                                "bmi1",
+                                "hle",
+                                "avx2",
+                                "smep",
+                                "bmi2",
+                                "erms",
+                                "invpcid",
+                                "rtm",
+                                "rdseed",
+                                "adx",
+                                "smap",
+                                "xsaveopt",
+                                "arch_capabilities"
+                            ],
+                            "ansible_form_factor": "Desktop",
+                            "ansible_fqdn": "votingappinfraautomation-vm.internal.cloudapp.net",
+                            "ansible_hostname": "votingAppInfraAutomation-VM",
+                            "ansible_hostnqn": "nqn.2014-08.org.nvmexpress:uuid:8da5bd74-9602-4e7a-8c70-2489b5d5b612",
+                            "ansible_interfaces": [
+                                "docker0",
+                                "eth0",
+                                "lo"
+                            ],
+                            "ansible_is_chroot": false,
+                            "ansible_iscsi_iqn": "",
+                            "ansible_kernel": "6.11.0-1018-azure",
+                            "ansible_kernel_version": "#18~24.04.1-Ubuntu SMP Sat Jun 28 04:46:03 UTC 2025",
+                            "ansible_lo": {
+                                "active": true,
+                                "device": "lo",
+                                "features": {
+                                    "esp_hw_offload": "off [fixed]",
+                                    "esp_tx_csum_hw_offload": "off [fixed]",
+                                    "fcoe_mtu": "off [fixed]",
+                                    "generic_receive_offload": "on",
+                                    "generic_segmentation_offload": "on",
+                                    "highdma": "on [fixed]",
+                                    "hsr_dup_offload": "off [fixed]",
+                                    "hsr_fwd_offload": "off [fixed]",
+                                    "hsr_tag_ins_offload": "off [fixed]",
+                                    "hsr_tag_rm_offload": "off [fixed]",
+                                    "hw_tc_offload": "off [fixed]",
+                                    "l2_fwd_offload": "off [fixed]",
+                                    "large_receive_offload": "off [fixed]",
+                                    "loopback": "on [fixed]",
+                                    "macsec_hw_offload": "off [fixed]",
+                                    "netns_local": "on [fixed]",
+                                    "ntuple_filters": "off [fixed]",
+                                    "receive_hashing": "off [fixed]",
+                                    "rx_all": "off [fixed]",
+                                    "rx_checksumming": "on [fixed]",
+                                    "rx_fcs": "off [fixed]",
+                                    "rx_gro_hw": "off [fixed]",
+                                    "rx_gro_list": "off",
+                                    "rx_udp_gro_forwarding": "off",
+                                    "rx_udp_tunnel_port_offload": "off [fixed]",
+                                    "rx_vlan_filter": "off [fixed]",
+                                    "rx_vlan_offload": "off [fixed]",
+                                    "rx_vlan_stag_filter": "off [fixed]",
+                                    "rx_vlan_stag_hw_parse": "off [fixed]",
+                                    "scatter_gather": "on",
+                                    "tcp_segmentation_offload": "on",
+                                    "tls_hw_record": "off [fixed]",
+                                    "tls_hw_rx_offload": "off [fixed]",
+                                    "tls_hw_tx_offload": "off [fixed]",
+                                    "tx_checksum_fcoe_crc": "off [fixed]",
+                                    "tx_checksum_ip_generic": "on [fixed]",
+                                    "tx_checksum_ipv4": "off [fixed]",
+                                    "tx_checksum_ipv6": "off [fixed]",
+                                    "tx_checksum_sctp": "on [fixed]",
+                                    "tx_checksumming": "on",
+                                    "tx_esp_segmentation": "off [fixed]",
+                                    "tx_fcoe_segmentation": "off [fixed]",
+                                    "tx_gre_csum_segmentation": "off [fixed]",
+                                    "tx_gre_segmentation": "off [fixed]",
+                                    "tx_gso_list": "on",
+                                    "tx_gso_partial": "off [fixed]",
+                                    "tx_gso_robust": "off [fixed]",
+                                    "tx_ipxip4_segmentation": "off [fixed]",
+                                    "tx_ipxip6_segmentation": "off [fixed]",
+                                    "tx_lockless": "on [fixed]",
+                                    "tx_nocache_copy": "off [fixed]",
+                                    "tx_scatter_gather": "on [fixed]",
+                                    "tx_scatter_gather_fraglist": "on [fixed]",
+                                    "tx_sctp_segmentation": "on",
+                                    "tx_tcp6_segmentation": "on",
+                                    "tx_tcp_ecn_segmentation": "on",
+                                    "tx_tcp_mangleid_segmentation": "on",
+                                    "tx_tcp_segmentation": "on",
+                                    "tx_tunnel_remcsum_segmentation": "off [fixed]",
+                                    "tx_udp_segmentation": "on",
+                                    "tx_udp_tnl_csum_segmentation": "off [fixed]",
+                                    "tx_udp_tnl_segmentation": "off [fixed]",
+                                    "tx_vlan_offload": "off [fixed]",
+                                    "tx_vlan_stag_hw_insert": "off [fixed]",
+                                    "vlan_challenged": "on [fixed]"
+                                },
+                                "hw_timestamp_filters": [],
+                                "ipv4": {
+                                    "address": "127.0.0.1",
+                                    "broadcast": "",
+                                    "netmask": "255.0.0.0",
+                                    "network": "127.0.0.0",
+                                    "prefix": "8"
+                                },
+                                "ipv6": [
+                                    {
+                                        "address": "::1",
+                                        "prefix": "128",
+                                        "scope": "host"
+                                    }
+                                ],
+                                "mtu": 65536,
+                                "promisc": false,
+                                "timestamping": [],
+                                "type": "loopback"
+                            },
+                            "ansible_loadavg": {
+                                "15m": 0.119140625,
+                                "1m": 0.0927734375,
+                                "5m": 0.09521484375
+                            },
+                            "ansible_local": {},
+                            "ansible_locally_reachable_ips": {
+                                "ipv4": [
+                                    "10.0.0.4",
+                                    "127.0.0.0/8",
+                                    "127.0.0.1",
+                                    "172.17.0.1"
+                                ],
+                                "ipv6": [
+                                    "::1",
+                                    "fe80::7e1e:52ff:fe65:4b6d",
+                                    "fe80::e048:97ff:fe4b:e180"
+                                ]
+                            },
+                            "ansible_lsb": {
+                                "codename": "noble",
+                                "description": "Ubuntu 24.04.3 LTS",
+                                "id": "Ubuntu",
+                                "major_release": "24",
+                                "release": "24.04"
+                            },
+                            "ansible_lvm": {
+                                "lvs": {},
+                                "pvs": {},
+                                "vgs": {}
+                            },
+                            "ansible_machine": "x86_64",
+                            "ansible_machine_id": "232bd769b025437baef2f344f65ed0d1",
+                            "ansible_memfree_mb": 100,
+                            "ansible_memory_mb": {
+                                "nocache": {
+                                    "free": 332,
+                                    "used": 516
+                                },
+                                "real": {
+                                    "free": 100,
+                                    "total": 848,
+                                    "used": 748
+                                },
+                                "swap": {
+                                    "cached": 0,
+                                    "free": 0,
+                                    "total": 0,
+                                    "used": 0
+                                }
+                            },
+                            "ansible_memtotal_mb": 848,
+                            "ansible_mounts": [
+                                {
+                                    "block_available": 5837290,
+                                    "block_size": 4096,
+                                    "block_total": 7344928,
+                                    "block_used": 1507638,
+                                    "device": "/dev/root",
+                                    "dump": 0,
+                                    "fstype": "ext4",
+                                    "inode_available": 3561216,
+                                    "inode_total": 3801088,
+                                    "inode_used": 239872,
+                                    "mount": "/",
+                                    "options": "rw,relatime,discard,errors=remount-ro,commit=30",
+                                    "passno": 0,
+                                    "size_available": 23909539840,
+                                    "size_total": 30084825088,
+                                    "uuid": "5b618de7-3de2-4d29-9615-b61ae39a7ef9"
+                                },
+                                {
+                                    "block_available": 181792,
+                                    "block_size": 4096,
+                                    "block_total": 225380,
+                                    "block_used": 43588,
+                                    "device": "/dev/sda16",
+                                    "dump": 0,
+                                    "fstype": "ext4",
+                                    "inode_available": 57892,
+                                    "inode_total": 58496,
+                                    "inode_used": 604,
+                                    "mount": "/boot",
+                                    "options": "rw,relatime,discard",
+                                    "passno": 0,
+                                    "size_available": 744620032,
+                                    "size_total": 923156480,
+                                    "uuid": "fada2ca4-ab5b-4a07-9d2a-3c28bb7a877f"
+                                },
+                                {
+                                    "block_available": 201164,
+                                    "block_size": 512,
+                                    "block_total": 213663,
+                                    "block_used": 12499,
+                                    "device": "/dev/sda15",
+                                    "dump": 0,
+                                    "fstype": "vfat",
+                                    "inode_available": 0,
+                                    "inode_total": 0,
+                                    "inode_used": 0,
+                                    "mount": "/boot/efi",
+                                    "options": "rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro",
+                                    "passno": 0,
+                                    "size_available": 102995968,
+                                    "size_total": 109395456,
+                                    "uuid": "200A-7E9B"
+                                },
+                                {
+                                    "block_available": 954622,
+                                    "block_size": 4096,
+                                    "block_total": 1011128,
+                                    "block_used": 56506,
+                                    "device": "/dev/sdb1",
+                                    "dump": 0,
+                                    "fstype": "ext4",
+                                    "inode_available": 262132,
+                                    "inode_total": 262144,
+                                    "inode_used": 12,
+                                    "mount": "/mnt",
+                                    "options": "rw,relatime",
+                                    "passno": 0,
+                                    "size_available": 3910131712,
+                                    "size_total": 4141580288,
+                                    "uuid": "ca5d84c8-f594-43f7-b4ed-658c05e8fc07"
+                                }
+                            ],
+                            "ansible_nodename": "votingAppInfraAutomation-VM",
+                            "ansible_os_family": "Debian",
+                            "ansible_pkg_mgr": "apt",
+                            "ansible_proc_cmdline": {
+                                "BOOT_IMAGE": "/vmlinuz-6.11.0-1018-azure",
+                                "console": [
+                                    "tty1",
+                                    "ttyS0"
+                                ],
+                                "earlyprintk": "ttyS0",
+                                "nvme_core.io_timeout": "240",
+                                "panic": "-1",
+                                "ro": true,
+                                "root": "PARTUUID=b64e0d51-c5e6-43a0-adab-9d3434918512"
+                            },
+                            "ansible_processor": [
+                                "0",
+                                "GenuineIntel",
+                                "Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz"
+                            ],
+                            "ansible_processor_cores": 1,
+                            "ansible_processor_count": 1,
+                            "ansible_processor_nproc": 1,
+                            "ansible_processor_threads_per_core": 1,
+                            "ansible_processor_vcpus": 1,
+                            "ansible_product_name": "Virtual Machine",
+                            "ansible_product_serial": "0000-0015-9966-4610-5925-3069-84",
+                            "ansible_product_uuid": "ddff80e1-2550-4a68-9356-2c43aa7c309f",
+                            "ansible_product_version": "Hyper-V UEFI Release v4.1",
+                            "ansible_python": {
+                                "executable": "/usr/bin/python3.12",
+                                "has_sslcontext": true,
+                                "type": "cpython",
+                                "version": {
+                                    "major": 3,
+                                    "micro": 3,
+                                    "minor": 12,
+                                    "releaselevel": "final",
+                                    "serial": 0
+                                },
+                                "version_info": [
+                                    3,
+                                    12,
+                                    3,
+                                    "final",
+                                    0
+                                ]
+                            },
+                            "ansible_python_version": "3.12.3",
+                            "ansible_real_group_id": 0,
+                            "ansible_real_user_id": 0,
+                            "ansible_selinux": {
+                                "status": "disabled"
+                            },
+                            "ansible_selinux_python_present": true,
+                            "ansible_service_mgr": "systemd",
+                            "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDvATAVKYzB1lIha379o/jRfDrslXLiX1OqO5PjfDCYoZZsT1SkTnv5EcxDN1uqeNIrB3wLsfZj+XaRldV9rUVw=",
+                            "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
+                            "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIDSy0hHoqZEGx3Ta+/4Homwmy5y4b4rrPmrg0cvBa7uD",
+                            "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
+                            "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQDXgMwFkkhPRZ6yTlTsLR2YiMWewEd1w9bs0DqgWBoGt5FOUp2JLOeVLdsfZj61hXyB5Bj+dgvk4SO0Eg6HaEj4AcaJiL2WQEiAkYZ8OXNtsurEaY6Z1lGB0xKq4/i4HxeBgC/NscSyYSKcYg6/p5nOtpBTzoTcNj973eOOs+vUuawru913U1J/38/5pgUnWyKYHalG2A7tUF5CiuoxXNZWEmLedD5Hc36JtDXL3CtUWTuefW2vZNRtfN6f0RGVKPdyHN9WHIYUBv+r71KaGTup9+2V9tKUkxGYr2xHX8Nq8odyB8uYgUurULTARl3Da/RPWL/lVj9vas6RsRvenq8vMaDZRObdIqPDzLrjMMoYz2Jw0ZcQsKhyjfPv/+9mu3lbgf+DT+v+RiQYPkat3Hm2vkbscI0H5timiiZRFvfV0mGClRdJD5vKB7/Qvw/3yfNrzTV7pdrBo6q2X27nQeab5gnF3WT+vs8S7pRESOVmqMcF8aWQdPhHNSK86O2RvW0=",
+                            "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa",
+                            "ansible_swapfree_mb": 0,
+                            "ansible_swaptotal_mb": 0,
+                            "ansible_system": "Linux",
+                            "ansible_system_capabilities": [],
+                            "ansible_system_capabilities_enforced": "False",
+                            "ansible_system_vendor": "Microsoft Corporation",
+                            "ansible_systemd": {
+                                "features": "+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified",
+                                "version": 255
+                            },
+                            "ansible_uptime_seconds": 4951,
+                            "ansible_user_dir": "/root",
+                            "ansible_user_gecos": "root",
+                            "ansible_user_gid": 0,
+                            "ansible_user_id": "root",
+                            "ansible_user_shell": "/bin/bash",
+                            "ansible_user_uid": 0,
+                            "ansible_userspace_architecture": "x86_64",
+                            "ansible_userspace_bits": "64",
+                            "ansible_virtualization_role": "guest",
+                            "ansible_virtualization_tech_guest": [
+                                "VirtualPC"
+                            ],
+                            "ansible_virtualization_tech_host": [],
+                            "ansible_virtualization_type": "VirtualPC",
+                            "discovered_interpreter_python": "/usr/bin/python3.12",
+                            "gather_subset": [
+                                "all"
+                            ],
+                            "module_setup": true
+                        },
+                        "changed": false,
+                        "warnings": [
+                            "Host 'votingAppInfraAutomation-VM' is using the discovered Python interpreter at '/usr/bin/python3.12', but future installation of another Python interpreter could cause a different interpreter to be discovered."
+                        ]
+                    },
+                    "resolved_action": "ansible.builtin.gather_facts",
+                    "start": "2025-08-21T12:09:27.254944+00:00",
+                    "task": "Gathering Facts",
+                    "task_action": "gather_facts",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml:2",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000001e",
+                    "uuid": "d273c77a-6670-4353-9c1c-3c2882ee442f"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "3s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 1,
+                    "__result": "Ok",
+                    "__task": "ensure git is installed",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 2.902748,
+                    "end": "2025-08-21T12:09:33.686355+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "cache_update_time": 1755776101,
+                        "cache_updated": false,
+                        "changed": false,
+                        "invocation": {
+                            "module_args": {
+                                "allow_change_held_packages": false,
+                                "allow_downgrade": false,
+                                "allow_unauthenticated": false,
+                                "auto_install_module_deps": true,
+                                "autoclean": false,
+                                "autoremove": false,
+                                "cache_valid_time": 0,
+                                "clean": false,
+                                "deb": null,
+                                "default_release": null,
+                                "dpkg_options": "force-confdef,force-confold",
+                                "fail_on_autoremove": false,
+                                "force": false,
+                                "force_apt_get": false,
+                                "install_recommends": null,
+                                "lock_timeout": 60,
+                                "name": "git",
+                                "only_upgrade": false,
+                                "package": [
+                                    "git"
+                                ],
+                                "policy_rc_d": null,
+                                "purge": false,
+                                "state": "present",
+                                "update_cache": null,
+                                "update_cache_retries": 5,
+                                "update_cache_retry_max_delay": 12,
+                                "upgrade": null
+                            }
+                        }
+                    },
+                    "resolved_action": "ansible.builtin.package",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:30.783607+00:00",
+                    "task": "ensure git is installed",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:5",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-000000000008",
+                    "uuid": "93333cc3-64e5-44dc-975b-e051516a0be4"
+                },
+                {
+                    "__changed": true,
+                    "__duration": "3s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 2,
+                    "__result": "Ok",
+                    "__task": "clone git project repo",
+                    "__task_action": "ansible.builtin.git",
+                    "duration": 2.512594,
+                    "end": "2025-08-21T12:09:36.212963+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "after": "63e9150ca17af4ed05880d4245e486481f73fcb4",
+                        "before": null,
+                        "changed": true,
+                        "invocation": {
+                            "module_args": {
+                                "accept_hostkey": false,
+                                "accept_newhostkey": false,
+                                "archive": null,
+                                "archive_prefix": null,
+                                "bare": false,
+                                "clone": true,
+                                "depth": null,
+                                "dest": "/root/Voting-App-Infrastructure-Automation",
+                                "executable": null,
+                                "force": false,
+                                "gpg_allowlist": [],
+                                "key_file": null,
+                                "recursive": true,
+                                "reference": null,
+                                "refspec": null,
+                                "remote": "origin",
+                                "repo": "https://github.com/dockersamples/example-voting-app.git",
+                                "separate_git_dir": null,
+                                "single_branch": false,
+                                "ssh_opts": null,
+                                "track_submodules": false,
+                                "umask": null,
+                                "update": true,
+                                "verify_commit": false,
+                                "version": "main"
+                            }
+                        }
+                    },
+                    "resolved_action": "ansible.builtin.git",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:33.700369+00:00",
+                    "task": "clone git project repo",
+                    "task_action": "ansible.builtin.git",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:10",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-000000000009",
+                    "uuid": "63ae065f-d300-4f12-b982-6d25323cb8f4"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "2s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 3,
+                    "__result": "Ok",
+                    "__task": "ensure python3 and python3-pip are installed",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 1.6638,
+                    "end": "2025-08-21T12:09:37.893458+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "cache_update_time": 1755776101,
+                        "cache_updated": false,
+                        "changed": false,
+                        "invocation": {
+                            "module_args": {
+                                "allow_change_held_packages": false,
+                                "allow_downgrade": false,
+                                "allow_unauthenticated": false,
+                                "auto_install_module_deps": true,
+                                "autoclean": false,
+                                "autoremove": false,
+                                "cache_valid_time": 0,
+                                "clean": false,
+                                "deb": null,
+                                "default_release": null,
+                                "dpkg_options": "force-confdef,force-confold",
+                                "fail_on_autoremove": false,
+                                "force": false,
+                                "force_apt_get": false,
+                                "install_recommends": null,
+                                "lock_timeout": 60,
+                                "name": [
+                                    "python3",
+                                    "python3-pip"
+                                ],
+                                "only_upgrade": false,
+                                "package": [
+                                    "python3",
+                                    "python3-pip"
+                                ],
+                                "policy_rc_d": null,
+                                "purge": false,
+                                "state": "present",
+                                "update_cache": null,
+                                "update_cache_retries": 5,
+                                "update_cache_retry_max_delay": 12,
+                                "upgrade": null
+                            }
+                        }
+                    },
+                    "resolved_action": "ansible.builtin.package",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:36.229658+00:00",
+                    "task": "ensure python3 and python3-pip are installed",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:18",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000a",
+                    "uuid": "f204a56d-ce23-4f9d-aa49-adcb007c5698"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 4,
+                    "__result": "Ok",
+                    "__task": "Set ostype fact",
+                    "__task_action": "set_fact",
+                    "duration": 0.054051,
+                    "end": "2025-08-21T12:09:37.961729+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "ansible_facts": {
+                            "osdistro": "ubuntu",
+                            "ostype": "debian"
+                        },
+                        "changed": false
+                    },
+                    "resolved_action": "ansible.builtin.set_fact",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:37.907678+00:00",
+                    "task": "Set ostype fact",
+                    "task_action": "set_fact",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:25",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000b",
+                    "uuid": "c74d4509-40ba-49c6-97fb-9275d73fd15a"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 5,
+                    "__result": "Ok",
+                    "__task": "Delete conflicting packages for Debian family",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 1.230642,
+                    "end": "2025-08-21T12:09:39.207389+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "changed": false,
+                        "invocation": {
+                            "module_args": {
+                                "allow_change_held_packages": false,
+                                "allow_downgrade": false,
+                                "allow_unauthenticated": false,
+                                "auto_install_module_deps": true,
+                                "autoclean": false,
+                                "autoremove": false,
+                                "cache_valid_time": 0,
+                                "clean": false,
+                                "deb": null,
+                                "default_release": null,
+                                "dpkg_options": "force-confdef,force-confold",
+                                "fail_on_autoremove": false,
+                                "force": false,
+                                "force_apt_get": false,
+                                "install_recommends": null,
+                                "lock_timeout": 60,
+                                "name": [
+                                    "docker.io",
+                                    "docker-doc",
+                                    "docker-compose",
+                                    "docker-compose-v2",
+                                    "podman-docker",
+                                    "containerd",
+                                    "runc"
+                                ],
+                                "only_upgrade": false,
+                                "package": [
+                                    "docker.io",
+                                    "docker-doc",
+                                    "docker-compose",
+                                    "docker-compose-v2",
+                                    "podman-docker",
+                                    "containerd",
+                                    "runc"
+                                ],
+                                "policy_rc_d": null,
+                                "purge": true,
+                                "state": "absent",
+                                "update_cache": null,
+                                "update_cache_retries": 5,
+                                "update_cache_retry_max_delay": 12,
+                                "upgrade": null
+                            }
+                        }
+                    },
+                    "resolved_action": "ansible.builtin.package",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:37.976747+00:00",
+                    "task": "Delete conflicting packages for Debian family",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:30",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000c",
+                    "uuid": "586854c8-048b-4b96-8728-cb48c4120478"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 6,
+                    "__result": "Skipped",
+                    "__task": "Delete conflicting packages for RedHat family",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 0.017937,
+                    "end": "2025-08-21T12:09:39.234398+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "resolved_action": null,
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:39.216461+00:00",
+                    "task": "Delete conflicting packages for RedHat family",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:37",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000d",
+                    "uuid": "6fd9f15f-282c-46f8-b11d-9bf982a7bdb2"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "2s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 7,
+                    "__result": "Ok",
+                    "__task": "Install prerequisite packages for Debian family",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 1.555357,
+                    "end": "2025-08-21T12:09:40.800903+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "cache_update_time": 1755776101,
+                        "cache_updated": false,
+                        "changed": false,
+                        "invocation": {
+                            "module_args": {
+                                "allow_change_held_packages": false,
+                                "allow_downgrade": false,
+                                "allow_unauthenticated": false,
+                                "auto_install_module_deps": true,
+                                "autoclean": false,
+                                "autoremove": false,
+                                "cache_valid_time": 0,
+                                "clean": false,
+                                "deb": null,
+                                "default_release": null,
+                                "dpkg_options": "force-confdef,force-confold",
+                                "fail_on_autoremove": false,
+                                "force": false,
+                                "force_apt_get": false,
+                                "install_recommends": null,
+                                "lock_timeout": 60,
+                                "name": [
+                                    "ca-certificates",
+                                    "curl",
+                                    "gnupg",
+                                    "lsb-release"
+                                ],
+                                "only_upgrade": false,
+                                "package": [
+                                    "ca-certificates",
+                                    "curl",
+                                    "gnupg",
+                                    "lsb-release"
+                                ],
+                                "policy_rc_d": null,
+                                "purge": false,
+                                "state": "present",
+                                "update_cache": null,
+                                "update_cache_retries": 5,
+                                "update_cache_retry_max_delay": 12,
+                                "upgrade": null
+                            }
+                        }
+                    },
+                    "resolved_action": "ansible.builtin.package",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:39.245546+00:00",
+                    "task": "Install prerequisite packages for Debian family",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:44",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000e",
+                    "uuid": "d753a885-b320-4bd4-b438-590e15e9223a"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 8,
+                    "__result": "Skipped",
+                    "__task": "Install prerequisite packages for RedHat family",
+                    "__task_action": "ansible.builtin.package",
+                    "duration": 0.021625,
+                    "end": "2025-08-21T12:09:40.833358+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "resolved_action": null,
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:40.811733+00:00",
+                    "task": "Install prerequisite packages for RedHat family",
+                    "task_action": "ansible.builtin.package",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:50",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-00000000000f",
+                    "uuid": "50da6f02-62be-4e05-b955-eeaced9bc15f"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 9,
+                    "__result": "Skipped",
+                    "__task": "Add Docker repo for RedHat family",
+                    "__task_action": "ansible.builtin.yum_repository",
+                    "duration": 0.018346,
+                    "end": "2025-08-21T12:09:40.859699+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "resolved_action": null,
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:40.841353+00:00",
+                    "task": "Add Docker repo for RedHat family",
+                    "task_action": "ansible.builtin.yum_repository",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:56",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-000000000010",
+                    "uuid": "aa770913-73c8-48fd-9972-6c621ed65db1"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 10,
+                    "__result": "Ok",
+                    "__task": "Download Docker GPG key for Debian family",
+                    "__task_action": "ansible.builtin.apt_key",
+                    "duration": 1.128239,
+                    "end": "2025-08-21T12:09:41.995472+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "before": [
+                            "8D81803C0EBFCD88",
+                            "7EA0A9C3F273FCD8"
+                        ],
+                        "changed": false,
+                        "fp": "8D81803C0EBFCD88",
+                        "id": "8D81803C0EBFCD88",
+                        "invocation": {
+                            "module_args": {
+                                "data": null,
+                                "file": null,
+                                "id": null,
+                                "keyring": "/usr/share/keyrings/docker-archive-keyring.gpg",
+                                "keyserver": null,
+                                "state": "present",
+                                "url": "https://download.docker.com/linux/ubuntu/gpg",
+                                "validate_certs": true
+                            }
+                        },
+                        "key_id": "8D81803C0EBFCD88",
+                        "short_id": "0EBFCD88"
+                    },
+                    "resolved_action": "ansible.builtin.apt_key",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:40.867233+00:00",
+                    "task": "Download Docker GPG key for Debian family",
+                    "task_action": "ansible.builtin.apt_key",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:65",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-000000000011",
+                    "uuid": "c60fded8-0eef-4fe0-a6fb-c1e038504e32"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__host": "votingAppInfraAutomation-VM",
+                    "__number": 11,
+                    "__result": "Failed",
+                    "__task": "Add Docker APT repository for Debian family",
+                    "__task_action": "ansible.builtin.apt_repository",
+                    "duration": 1.037842,
+                    "end": "2025-08-21T12:09:43.044707+00:00",
+                    "event_loop": null,
+                    "host": "votingAppInfraAutomation-VM",
+                    "ignore_errors": null,
+                    "play": "Test example voting app role",
+                    "play_pattern": "azure_vms",
+                    "play_uuid": "7c1e5265-4b6d-9265-caa9-000000000002",
+                    "playbook": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml",
+                    "playbook_uuid": "5292eda1-9bce-4e02-9b53-743f7f60db87",
+                    "remote_addr": "votingAppInfraAutomation-VM",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "changed": false,
+                        "exception": "(traceback unavailable)",
+                        "msg": "Task failed: Module failed: E:Conflicting values set for option Signed-By regarding source https://download.docker.com/linux/ubuntu/ noble: /usr/share/keyrings/docker-archive-keyring.gpg != /etc/apt/keyrings/docker.gpg, E:The list of sources could not be read."
+                    },
+                    "resolved_action": "ansible.builtin.apt_repository",
+                    "role": "example-voting-app-role",
+                    "start": "2025-08-21T12:09:42.006865+00:00",
+                    "task": "Add Docker APT repository for Debian family",
+                    "task_action": "ansible.builtin.apt_repository",
+                    "task_args": "",
+                    "task_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:72",
+                    "task_uuid": "7c1e5265-4b6d-9265-caa9-000000000012",
+                    "uuid": "56707c24-8f17-46cf-bd85-c1cb3a29b62a"
+                }
+            ],
+            "uuid": "7c1e5265-4b6d-9265-caa9-000000000002"
+        }
+    ],
+    "settings_entries": {
+        "ansible-navigator": {
+            "ansible": {
+                "config": {
+                    "help": false
+                },
+                "doc": {
+                    "help": false,
+                    "plugin": {
+                        "type": "module"
+                    }
+                },
+                "inventory": {
+                    "entries": [
+                        "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/inventory"
+                    ],
+                    "help": false
+                },
+                "playbook": {
+                    "help": false,
+                    "path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/automate-example-voting-app.yml"
+                }
+            },
+            "ansible-builder": {
+                "help": false,
+                "workdir": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation"
+            },
+            "ansible-runner": {
+                "job-events": false
+            },
+            "app": "run",
+            "collection-doc-cache-path": "/home/azureuser/.cache/ansible-navigator/collection_doc_cache.db",
+            "color": {
+                "enable": true,
+                "osc4": true
+            },
+            "editor": {
+                "command": "vi +{line_number} {filename}",
+                "console": true
+            },
+            "enable-prompts": false,
+            "exec": {
+                "command": "/bin/bash",
+                "shell": true
+            },
+            "execution-environment": {
+                "container-engine": "docker",
+                "enabled": false,
+                "image": "ghcr.io/ansible/creator-ee:latest",
+                "pull": {
+                    "policy": "missing"
+                },
+                "volume-mounts": [
+                    {
+                        "dest": "/home/ansible/.ansible/collections",
+                        "options": "Z",
+                        "src": "/home/azureuser/.ansible/collections"
+                    }
+                ]
+            },
+            "format": "yaml",
+            "images": {
+                "details": [
+                    "everything"
+                ]
+            },
+            "logging": {
+                "append": true,
+                "file": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible-navigator.log",
+                "level": "warning"
+            },
+            "mode": "stdout",
+            "playbook-artifact": {
+                "enable": true,
+                "save-as": "{playbook_dir}/{playbook_name}-artifact-{time_stamp}.json"
+            },
+            "settings": {
+                "effective": false,
+                "sample": false,
+                "schema": "json",
+                "sources": false
+            },
+            "time-zone": "UTC"
+        }
+    },
+    "settings_sources": {
+        "ansible-navigator.ansible-builder.help": "Defaults",
+        "ansible-navigator.ansible-builder.workdir": "Defaults",
+        "ansible-navigator.ansible-lint.config": "Not set",
+        "ansible-navigator.ansible-lint.lintables": "Not set",
+        "ansible-navigator.ansible-runner.artifact-dir": "Not set",
+        "ansible-navigator.ansible-runner.job-events": "Defaults",
+        "ansible-navigator.ansible-runner.rotate-artifacts-count": "Not set",
+        "ansible-navigator.ansible-runner.timeout": "Not set",
+        "ansible-navigator.ansible.cmdline": "Not set",
+        "ansible-navigator.ansible.config.help": "Defaults",
+        "ansible-navigator.ansible.config.path": "Not set",
+        "ansible-navigator.ansible.doc.help": "Defaults",
+        "ansible-navigator.ansible.doc.plugin.name": "Not set",
+        "ansible-navigator.ansible.doc.plugin.type": "Defaults",
+        "ansible-navigator.ansible.inventory.entries": "Command line",
+        "ansible-navigator.ansible.inventory.help": "Defaults",
+        "ansible-navigator.ansible.playbook.help": "Defaults",
+        "ansible-navigator.ansible.playbook.path": "Command line",
+        "ansible-navigator.app": "Command line",
+        "ansible-navigator.collection-doc-cache-path": "Defaults",
+        "ansible-navigator.color.enable": "Defaults",
+        "ansible-navigator.color.osc4": "Defaults",
+        "ansible-navigator.editor.command": "Defaults",
+        "ansible-navigator.editor.console": "Defaults",
+        "ansible-navigator.enable-prompts": "Defaults",
+        "ansible-navigator.exec.command": "Defaults",
+        "ansible-navigator.exec.shell": "Defaults",
+        "ansible-navigator.execution-environment.container-engine": "Settings file",
+        "ansible-navigator.execution-environment.container-options": "Not set",
+        "ansible-navigator.execution-environment.enabled": "Command line",
+        "ansible-navigator.execution-environment.environment-variables.pass": "Not set",
+        "ansible-navigator.execution-environment.environment-variables.set": "Not set",
+        "ansible-navigator.execution-environment.image": "Settings file",
+        "ansible-navigator.execution-environment.pull.arguments": "Not set",
+        "ansible-navigator.execution-environment.pull.policy": "Settings file",
+        "ansible-navigator.execution-environment.volume-mounts": "Settings file",
+        "ansible-navigator.format": "Defaults",
+        "ansible-navigator.images.details": "Defaults",
+        "ansible-navigator.inventory-columns": "Not set",
+        "ansible-navigator.logging.append": "Defaults",
+        "ansible-navigator.logging.file": "Defaults",
+        "ansible-navigator.logging.level": "Defaults",
+        "ansible-navigator.mode": "Command line",
+        "ansible-navigator.playbook-artifact.enable": "Defaults",
+        "ansible-navigator.playbook-artifact.replay": "Not set",
+        "ansible-navigator.playbook-artifact.save-as": "Defaults",
+        "ansible-navigator.settings.effective": "Defaults",
+        "ansible-navigator.settings.sample": "Defaults",
+        "ansible-navigator.settings.schema": "Defaults",
+        "ansible-navigator.settings.sources": "Defaults",
+        "ansible-navigator.time-zone": "Defaults",
+        "settings_file_path": "/home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/ansible-navigator.yml",
+        "settings_file_source": "Search path"
+    },
+    "status": "failed",
+    "status_color": 9,
+    "stdout": [
+        "",
+        "PLAY [Test example voting app role] ********************************************",
+        "",
+        "TASK [Gathering Facts] *********************************************************",
+        "\u001b[1;35m[WARNING]: Host 'votingAppInfraAutomation-VM' is using the discovered Python interpreter at '/usr/bin/python3.12', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.\u001b[0m",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : ensure git is installed] ***********************",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : clone git project repo] ************************",
+        "\u001b[0;33mchanged: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : ensure python3 and python3-pip are installed] ***",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Set ostype fact] *******************************",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Delete conflicting packages for Debian family] ***",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Delete conflicting packages for RedHat family] ***",
+        "\u001b[0;36mskipping: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Install prerequisite packages for Debian family] ***",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Install prerequisite packages for RedHat family] ***",
+        "\u001b[0;36mskipping: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Add Docker repo for RedHat family] *************",
+        "\u001b[0;36mskipping: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Download Docker GPG key for Debian family] *****",
+        "\u001b[0;32mok: [votingAppInfraAutomation-VM]\u001b[0m",
+        "",
+        "TASK [example-voting-app-role : Add Docker APT repository for Debian family] ***",
+        "\u001b[0;31m[ERROR]: Task failed: Module failed: E:Conflicting values set for option Signed-By regarding source https://download.docker.com/linux/ubuntu/ noble: /usr/share/keyrings/docker-archive-keyring.gpg != /etc/apt/keyrings/docker.gpg, E:The list of sources could not be read.\u001b[0m",
+        "\u001b[0;31mOrigin: /home/azureuser/Voting-App-Infrastructure-Automation/ansible-automation/roles/example-voting-app-role/tasks/main.yml:72:3\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31m70   when: osdistro in ['debian', 'ubuntu']\u001b[0m",
+        "\u001b[0;31m71\u001b[0m",
+        "\u001b[0;31m72 - name: Add Docker APT repository for Debian family\u001b[0m",
+        "\u001b[0;31m     ^ column 3\u001b[0m",
+        "\u001b[0;31m\u001b[0m",
+        "\u001b[0;31mfatal: [votingAppInfraAutomation-VM]: FAILED! => {\"changed\": false, \"msg\": \"Task failed: Module failed: E:Conflicting values set for option Signed-By regarding source https://download.docker.com/linux/ubuntu/ noble: /usr/share/keyrings/docker-archive-keyring.gpg != /etc/apt/keyrings/docker.gpg, E:The list of sources could not be read.\"}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;31mvotingAppInfraAutomation-VM\u001b[0m : \u001b[0;32mok=8   \u001b[0m \u001b[0;33mchanged=1   \u001b[0m unreachable=0    \u001b[0;31mfailed=1   \u001b[0m \u001b[0;36mskipped=3   \u001b[0m rescued=0    ignored=0   "
+    ],
+    "version": "2.0.0"
+}

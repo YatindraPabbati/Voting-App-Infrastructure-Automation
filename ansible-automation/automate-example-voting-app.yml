@@ -1,7 +1,9 @@
 ---
-- name: Test example voting app role
+- name: automate example voting app
   hosts: azure_vms
   become: true
   gather_facts: true
+  vars:
+    voting_app_dir: "{{ ansible_user_dir }}"
   roles:
     - example-voting-app-role

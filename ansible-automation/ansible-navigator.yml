@@ -7,6 +7,6 @@ ansible-navigator:
     pull:
       policy: missing
     volume-mounts:
-    - dest: /home/ansible/.ansible/collections
+    - src: /home/azureuser/.ansible/collections
+      dest: /home/ansible/.ansible/collections
       options: Z
-      src: ~/.ansible/collections
