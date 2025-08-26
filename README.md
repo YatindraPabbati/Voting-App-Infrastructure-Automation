@@ -29,7 +29,7 @@ The application itself is sourced from Docker's [example-voting-app](https://git
 
 ## Architecture 
 
-<img width="1024" height="1536" alt="25f687fc-616a-4a03-a642-8abed1c6c8d9" src="https://github.com/user-attachments/assets/e943dece-567b-482c-9046-4a5347950135" />
+![Alt text](<img width="1024" height="1536" alt="25f687fc-616a-4a03-a642-8abed1c6c8d9" src="https://github.com/user-attachments/assets/e943dece-567b-482c-9046-4a5347950135" />)
 
 ## Ansible Automation Role
 
