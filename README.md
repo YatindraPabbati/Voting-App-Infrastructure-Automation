@@ -56,7 +56,7 @@ Supports both **Debian/Ubuntu** and **RedHat/CentOS** distributions.
 
 ---
 
-## Directory Structure
+## Role Structure
 
 ```text
 example-voting-app-role/
