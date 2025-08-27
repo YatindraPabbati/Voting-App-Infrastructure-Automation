@@ -1,5 +1,3 @@
-
-````markdown
 # Voting App Infrastructure Automation
 
 This repository provides automation for deploying the **Demo Voting App**. It combines the original Docker application with Ansible automation to simplify setup and management.
@@ -25,6 +23,22 @@ This repository provides automation for deploying the **Demo Voting App**. It co
 This repository provides automation to deploy the Docker-based **Voting App** quickly on your servers. It ensures Docker is installed, configures the application, and starts the app stack using Docker Compose.  
 
 The application itself is sourced from Docker's [example-voting-app](https://github.com/dockersamples/example-voting-app). All original source code belongs to Docker and is licensed under its original terms.  
+
+---
+
+## Architecture
+
+![Ansible Voting App Process](https://raw.githubusercontent.com/YatindraPabbati/AnsibleAutomation/main/AnsibleAutomationVotingAppProcess.png)
+
+* Front-end web app in Python (`vote`)
+* Redis for messaging
+* .NET worker consuming votes
+* PostgreSQL database
+* Node.js web app displaying results
+
+Notes: Only one vote per client browser is accepted. This is a simple demo application to show how multiple languages, queues, and persistence work together in Docker.
+
+---
 
 ## Ansible Automation Role
 
@@ -56,6 +70,7 @@ example-voting-app-role/
 ├── vars/           # Role variables
 └── README.md       # This README
 ```
+
 ---
 
 ## Requirements
@@ -110,21 +125,7 @@ The stack uses the following services:
 * **worker:** .NET worker
 * **result:** Node.js web app
 
-Docker Compose template is applied via the Ansible role to the deployment user’s directory.
-
----
-
-## Architecture
-
-![Ansible Voting App Automation Process](https://raw.githubusercontent.com/YatindraPabbati/AnsibleAutomation/main/AnsibleAutomationVotingAppProcess.png)
-
-* Front-end web app in Python (`vote`)
-* Redis for messaging
-* .NET worker consuming votes
-* PostgreSQL database
-* Node.js web app displaying results
-
-Notes: Only one vote per client browser is accepted. This is a simple demo application to show how multiple languages, queues, and persistence work together in Docker.
+Docker Compose template is applied via the Ansible role to the deployment user's directory.
 
 ---
 
@@ -143,5 +144,4 @@ This repository contains two distinct parts, each under its own license:
    - These files remain under their original license. No modifications to the source code license have been made.  
 
 **Usage Note:**  
-You are free to use the Ansible automation role as you like under MIT. When redistributing or modifying the Docker app itself, ensure you comply with Docker’s original license terms.  
-
+You are free to use the Ansible automation role as you like under MIT. When redistributing or modifying the Docker app itself, ensure you comply with Docker's original license terms.
