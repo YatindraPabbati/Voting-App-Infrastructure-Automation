@@ -29,7 +29,7 @@ The application itself is sourced from Docker's [example-voting-app](https://git
 
 ## Architecture
 
-![Ansible Voting App Process](./AnsibleAutomationVotingAppProcess.png)
+![Ansible Voting App Process](AnsibleAutomationVotingAppProcess.png)
 
 ## Ansible Automation Role
 
