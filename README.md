@@ -27,10 +27,9 @@ This repository provides automation to deploy the Docker-based **Voting App** qu
 The application itself is sourced from Docker's [example-voting-app](https://github.com/dockersamples/example-voting-app). All original source code belongs to Docker and is licensed under its original terms.  
 
 
-## Architecture 
-<p>
-<img width="1024" height="1536" alt="AnsibleAutomationVotingAppProcess" src="https://github.com/user-attachments/assets/7a67e01e-e175-4d78-8434-3a3d97f2ebb6" />
-</p>
+## Architecture
+
+![Ansible Voting App Process](./AnsibleAutomationVotingAppProcess.png)
 
 ## Ansible Automation Role
 
