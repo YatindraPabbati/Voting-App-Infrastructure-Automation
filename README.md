@@ -28,7 +28,8 @@ The application itself is sourced from Docker's [example-voting-app](https://git
 
 ## Architecture
 
-![Ansible Voting App Process](https://raw.githubusercontent.com/YatindraPabbati/AnsibleAutomation/main/AnsibleAutomationVotingAppProcess.png)
+[![Ansible Voting App Process](https://raw.githubusercontent.com/YatindraPabbati/AnsibleAutomation/main/AnsibleAutomationVotingAppProcess.png)
+](https://github.com/YatindraPabbati/Voting-App-Infrastructure-Automation/blob/079761479004edba5ff4ef2cc59c9e9db1db653b/AnsibleAutomationVotingAppProcess.png)
 
 * Front-end web app in Python (`vote`)
 * Redis for messaging
