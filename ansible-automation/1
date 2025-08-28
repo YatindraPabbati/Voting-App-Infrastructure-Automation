@@ -1,2 +1,0 @@
-[azure_vms]
-votingAppInfraAutomation-VM ansible_host=127.0.0.1 ansible_user=azureuser ansible_ssh_private_key_file=/home/azureuser/.ssh/votingAppInfraAutomation-VM_key.pem
